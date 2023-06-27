@@ -144,3 +144,7 @@ svg.icon {
   /* 定义显示样式 */
   font-display: block;
 }
+
+#nav *::after{
+  background-color: transparent!important;
+}
