@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>sklearn机器学习通用技术——混淆矩阵与ROC曲线</title>
+      <title>机器学习通用技术：混淆矩阵与ROC曲线</title>
       <link href="/2024/04/04/2024-4-4-ROC/"/>
       <url>/2024/04/04/2024-4-4-ROC/</url>
       
@@ -33,7 +33,7 @@
     
     
     <entry>
-      <title>sklearn机器学习通用技术——学习曲线</title>
+      <title>机器学习通用技术：学习曲线</title>
       <link href="/2024/04/02/2024-4-2-learning_curve/"/>
       <url>/2024/04/02/2024-4-2-learning_curve/</url>
       
@@ -252,7 +252,7 @@
     
     
     <entry>
-      <title>特征工程——特征选择常用方法</title>
+      <title>特征工程：特征选择常用方法</title>
       <link href="/2024/03/07/2024-3-7-feature_select/"/>
       <url>/2024/03/07/2024-3-7-feature_select/</url>
       
@@ -430,7 +430,7 @@
     
     
     <entry>
-      <title>sklearn机器学习通用技术——快速入门</title>
+      <title>机器学习通用技术：sklearn快速入门</title>
       <link href="/2024/01/10/2024-1-10-sklearnML/"/>
       <url>/2024/01/10/2024-1-10-sklearnML/</url>
       
@@ -459,7 +459,7 @@
     
     
     <entry>
-      <title>决策树（下）——CART算法及其代码实现</title>
+      <title>决策树（下）：CART算法及其代码实现</title>
       <link href="/2023/12/19/2023-12-19-DecisionTree-2/"/>
       <url>/2023/12/19/2023-12-19-DecisionTree-2/</url>
       
@@ -490,7 +490,7 @@
     
     
     <entry>
-      <title>决策树（上）——ID3算法与C4.5算法</title>
+      <title>决策树（上）：ID3算法与C4.5算法</title>
       <link href="/2023/12/15/2023-12-15-DecisionTree-1/"/>
       <url>/2023/12/15/2023-12-15-DecisionTree-1/</url>
       
