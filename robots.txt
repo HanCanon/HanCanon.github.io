@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /archives/
+Disallow: /categories/
+Disallow: /tags/
+Disallow: /link/
+Disallow: /page/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Sitemap: https://blog.hancanon.com/sitemap.xml
