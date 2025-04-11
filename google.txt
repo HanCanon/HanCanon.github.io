@@ -1,3 +1,4 @@
+https://blog.hancanon.com/2025-4-11-MatrixAlgebra.html
 https://blog.hancanon.com/2025-3-12-Iterator_Generator.html
 https://blog.hancanon.com/2025-2-10-TranslucentTB_debug.html
 https://blog.hancanon.com/2025-1-30-MLP.html
@@ -17,4 +18,3 @@ https://blog.hancanon.com/2023-3-3-RandomForest.html
 https://blog.hancanon.com/2024-2-28-read-image.html
 https://blog.hancanon.com/2024-2-14-Generalization.html
 https://blog.hancanon.com/2024-2-1-SQL.html
-https://blog.hancanon.com/2024-1-20-ensemble_learning.html
