@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+
+Sitemap: https://blog.hancanon.com/sitemap.xml
+Sitemap: https://cn.blog.hancanon.com/sitemap.xml
