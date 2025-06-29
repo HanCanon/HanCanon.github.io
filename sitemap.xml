@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.hancanon.com/2025-1-30-MLP.html</loc>
+    
+    <lastmod>2025-06-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.hancanon.com/2025-4-21-PytorchDL.html</loc>
     
     <lastmod>2025-04-21</lastmod>
@@ -50,15 +59,6 @@
     <loc>https://blog.hancanon.com/2025-2-10-TranslucentTB_debug.html</loc>
     
     <lastmod>2025-02-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.hancanon.com/2025-1-30-MLP.html</loc>
-    
-    <lastmod>2025-01-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -173,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://blog.hancanon.com/2023-12-19-DecisionTree-2.html</loc>
+    <loc>https://blog.hancanon.com/2024-1-10-sklearnML.html</loc>
     
     <lastmod>2024-03-08</lastmod>
     
@@ -182,7 +182,7 @@
   </url>
   
   <url>
-    <loc>https://blog.hancanon.com/2024-1-10-sklearnML.html</loc>
+    <loc>https://blog.hancanon.com/2023-12-19-DecisionTree-2.html</loc>
     
     <lastmod>2024-03-08</lastmod>
     
@@ -327,13 +327,6 @@
   </url>
   
   <url>
-    <loc>https://blog.hancanon.com/tags/python/</loc>
-    <lastmod>2025-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.hancanon.com/tags/%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -348,6 +341,13 @@
   </url>
   
   <url>
+    <loc>https://blog.hancanon.com/tags/python/</loc>
+    <lastmod>2025-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.hancanon.com/tags/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -355,14 +355,7 @@
   </url>
   
   <url>
-    <loc>https://blog.hancanon.com/tags/skimage/</loc>
-    <lastmod>2025-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.hancanon.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</loc>
+    <loc>https://blog.hancanon.com/tags/%E7%90%86%E8%AE%BA/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -377,13 +370,6 @@
   
   <url>
     <loc>https://blog.hancanon.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2025-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.hancanon.com/tags/%E7%90%86%E8%AE%BA/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -405,6 +391,20 @@
   
   <url>
     <loc>https://blog.hancanon.com/tags/A-B%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2025-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hancanon.com/tags/skimage/</loc>
+    <lastmod>2025-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hancanon.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -439,6 +439,20 @@
   </url>
   
   <url>
+    <loc>https://blog.hancanon.com/tags/Debug/</loc>
+    <lastmod>2025-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hancanon.com/tags/Windows10/</loc>
+    <lastmod>2025-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.hancanon.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -453,28 +467,7 @@
   </url>
   
   <url>
-    <loc>https://blog.hancanon.com/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/</loc>
-    <lastmod>2025-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.hancanon.com/tags/Pytorch/</loc>
-    <lastmod>2025-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.hancanon.com/tags/Debug/</loc>
-    <lastmod>2025-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.hancanon.com/tags/Windows10/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -494,31 +487,17 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://blog.hancanon.com/tags/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2025-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
     <loc>https://blog.hancanon.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2025-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.hancanon.com/categories/%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97/</loc>
-    <lastmod>2025-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.hancanon.com/categories/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/</loc>
-    <lastmod>2025-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.hancanon.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -532,7 +511,21 @@
   </url>
   
   <url>
-    <loc>https://blog.hancanon.com/categories/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</loc>
+    <loc>https://blog.hancanon.com/categories/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2025-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hancanon.com/categories/%E7%BB%9F%E8%AE%A1%E8%AE%A1%E7%AE%97/</loc>
+    <lastmod>2025-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hancanon.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -546,7 +539,21 @@
   </url>
   
   <url>
+    <loc>https://blog.hancanon.com/categories/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</loc>
+    <lastmod>2025-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.hancanon.com/categories/%E6%9D%82%E9%A1%B9/</loc>
+    <lastmod>2025-06-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hancanon.com/categories/Debug/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -561,13 +568,6 @@
   
   <url>
     <loc>https://blog.hancanon.com/categories/Python/</loc>
-    <lastmod>2025-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.hancanon.com/categories/Debug/</loc>
     <lastmod>2025-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
