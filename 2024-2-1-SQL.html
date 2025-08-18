@@ -1,0 +1,1942 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>SQL查询基础教程 | HanCanonのBlog</title><meta name="author" content="HanCanon"><meta name="copyright" content="HanCanon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="SQL查询语句的基础教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL查询基础教程">
+<meta property="og:url" content="https://blog.hancanon.com/2024-2-1-SQL.html">
+<meta property="og:site_name" content="HanCanonのBlog">
+<meta property="og:description" content="SQL查询语句的基础教程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://han-canon-picture.oss-accelerate.aliyuncs.com/%E6%8A%98%E5%8D%83.webp">
+<meta property="article:published_time" content="2024-02-01T10:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-28T12:00:00.000Z">
+<meta property="article:author" content="HanCanon">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://han-canon-picture.oss-accelerate.aliyuncs.com/%E6%8A%98%E5%8D%83.webp"><link rel="shortcut icon" href="https://han-canon-picture.oss-accelerate.aliyuncs.com/抹茶芭菲.webp"><link rel="canonical" href="https://blog.hancanon.com/2024-2-1-SQL.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="vXoUBFQ43k60e5hZnfx98hISuS4V1jfxK5WtyFyXF44"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'SQL查询基础教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-28 20:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/%E8%99%B9%E5%A4%8F%E5%A4%B4%E5%83%8F.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-SmartHome"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-SmartHome"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon--shijian"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon--shijian"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw icon-yanshoubiaoqianguanli"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-yanshoubiaoqianguanli"></use></svg><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-wenjianjia"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wenjianjia"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw icon-link"></i><svg class="icon fas fa-tada" aria-hidden="true"><use xlink:href="#icon-link"></use></svg><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://han-canon-picture.oss-accelerate.aliyuncs.com/折千.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="HanCanonのBlog"><span class="site-name">HanCanonのBlog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><svg class="faa-tada icon" style="height:24px;width:24px;fill:currentColor;position:relative;top:2px" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-SmartHome"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-SmartHome"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon--shijian"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon--shijian"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw icon-yanshoubiaoqianguanli"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-yanshoubiaoqianguanli"></use></svg><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-wenjianjia"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wenjianjia"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw icon-link"></i><svg class="icon fas fa-tada" aria-hidden="true"><use xlink:href="#icon-link"></use></svg><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">SQL查询基础教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-01T10:00:00.000Z" title="发表于 2024-02-01 18:00:00">2024-02-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-28T12:00:00.000Z" title="更新于 2024-02-28 20:00:00">2024-02-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="SQL查询基础教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
+<p>本文为作者学习<code>SQL</code>的个人笔记，旨在记录自己学习的常用语法，整体学习顺序为先学基本框架语法再慢慢补充零碎知识点。运行环境为<code>MySQL</code>，故使用所有语法均使用<code>MySQL</code>版本。</p>
+<h2 id="基础结构"><a class="markdownIt-Anchor" href="#基础结构"></a> 基础结构</h2>
+<p><code>SQL</code>查询语句实现的基本功能，从<strong>一张表</strong>中，取出<strong>一或多个列</strong>，这些列需要符合<strong>一些条件</strong>，最终取出的数据要根据<strong>一或多个列</strong>的大小进行排序。上面加粗的便是我们需要提供给<code>SQL</code>的参数，具体语句如下（所有SQL语句都需要以<strong>分号</strong>结束）：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 列名</span><br><span class="line"><span class="keyword">from</span> 表名</span><br><span class="line"><span class="keyword">where</span> 条件</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 列名（用于排序）;</span><br></pre></td></tr></table></figure>
+<h3 id="select"><a class="markdownIt-Anchor" href="#select"></a> select</h3>
+<p><code>select</code>语句可以查询一个或多个列，或者查询所有列，具体的输入如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 列名  # 查询一个列</span><br><span class="line"><span class="keyword">select</span> 列名<span class="number">1</span>, 列名<span class="number">2</span>  # 查询多个列</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span>  # 查询所有列</span><br></pre></td></tr></table></figure>
+<h3 id="where"><a class="markdownIt-Anchor" href="#where"></a> where</h3>
+<p><code>where</code>子句类似于一般编程语言中的<code>if-else</code>语句，即给定筛选条件，一般会包含运算符，常见的运算符如下表</p>
+<p><img src="https://han-canon-picture.oss-accelerate.aliyuncs.com/image-20240127165705147.png" alt="image-20240127165705147" /></p>
+<p>大部分运算符与常见编程语言相同，需要额外注意的为<code>null</code>的运算。</p>
+<p>当然，<code>where</code>子句也支持条件的组合，使用<code>and</code>与<code>or</code>来连接多个条件语句（需要注意的是<code>and</code>的优先级更高，必要时需要使用括号来改变优先级）。还有<code>in</code>操作符，用于表示筛选条件为数据位于一个集合中。还有<code>not</code>操作符，用于取反。还是用上文的表<code>studentscore</code>来举例说明</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span>  # 筛选id为<span class="number">1</span>的记录</span><br><span class="line"><span class="keyword">where</span> id <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> lesson <span class="operator">=</span> <span class="number">1</span>  # 筛选id为<span class="number">1</span>且lesson为<span class="number">1</span>的记录</span><br><span class="line"><span class="keyword">where</span> lesson <span class="operator">=</span> <span class="number">1</span> <span class="keyword">or</span> lesson <span class="operator">=</span> <span class="number">2</span>  # 筛选lesson为<span class="number">1</span>或lesson为<span class="number">2</span>的记录</span><br><span class="line"><span class="keyword">where</span> lesson <span class="keyword">in</span> (<span class="number">1</span>, <span class="number">2</span>)  # 筛选lesson在集合(<span class="number">1</span>, <span class="number">2</span>)中的记录</span><br><span class="line"><span class="keyword">where</span> lesson <span class="keyword">not</span> <span class="keyword">in</span> (<span class="number">3</span>, <span class="number">4</span>)  # 筛选lesson不在集合(<span class="number">3</span>, <span class="number">4</span>)中的记录</span><br><span class="line"><span class="keyword">where</span> score <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">null</span> # 筛选score不为空的记录</span><br></pre></td></tr></table></figure>
+<p><code>where</code>子句还可以配合很多函数使用，这些我们后文再说。</p>
+<h3 id="order-by"><a class="markdownIt-Anchor" href="#order-by"></a> order by</h3>
+<p><code>order by</code>子句非常简单，就是对最终输出的结果按照指定列进行排序，默认为升序，即字符串从A到Z，数值从小到大，时间从早到晚，使用<code>desc</code>关键字可改为降序，常见输入如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 列名  # 按给定列排序</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 列名<span class="number">1</span>, 列名<span class="number">2</span>  # 先按列<span class="number">1</span>进行排序，列<span class="number">1</span>取值相同的记录再按照列<span class="number">2</span>排序</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 列名 <span class="keyword">desc</span> # 按给定列降序排序</span><br></pre></td></tr></table></figure>
+<p>还需要注意的是，<code>order by</code>子句必须写在<code>SQL</code>语句的最后。</p>
+<h3 id="示例"><a class="markdownIt-Anchor" href="#示例"></a> 示例</h3>
+<p>现在，让我们结合上述的基本结构，使用表<code>studentscore</code>来举例。表<code>studentscore</code>（id为学生学号，lesson为课程编号，score为成绩）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">70</td>
+</tr>
+</tbody>
+</table>
+<p>现在需要取出课程编号为1，2的所有及格的成绩，同时score可能存在空值，需要剔除score为空的数据，最后按学号升序排序。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> studentscore</span><br><span class="line"><span class="keyword">where</span> lesson <span class="keyword">in</span> (<span class="number">1</span>, <span class="number">2</span>) <span class="keyword">and</span> score <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">null</span> <span class="keyword">and</span> score <span class="operator">&gt;=</span> <span class="number">60</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> id;</span><br></pre></td></tr></table></figure>
+<h3 id="补充"><a class="markdownIt-Anchor" href="#补充"></a> 补充</h3>
+<h4 id="distinct关键字"><a class="markdownIt-Anchor" href="#distinct关键字"></a> distinct关键字</h4>
+<p>在实际使用过程中，可能会遇到需要查看一个列所有取值的情况，这时候就可以使用<code>distinct</code>关键字，这可以返回给定列中不同的值。我们来看一些例子，使用上文的表<code>studentscore</code>来举例</p>
+<p>进行查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>其输出为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">id</span><br><span class="line">------</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>若使用<code>distinct</code>关键字</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> id</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>则输出为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">id</span><br><span class="line">------</span><br><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，<code>distinct</code>关键字会作用于所有输入的列，这会输出所有不同的多个列的组合，例如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> id, lesson</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>则输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>该表中存在两条id为2，lesson为1的记录，故只会输出一次。</p>
+<p>从上述例子也可以看出，只要使用<code>distinct</code>关键字，则所有列都会被去重，故不存在对一部分列使用<code>distinct</code>关键字，对另一部分不使用的用法。</p>
+<h4 id="模糊匹配"><a class="markdownIt-Anchor" href="#模糊匹配"></a> 模糊匹配</h4>
+<p>模糊匹配多用于字符数据，如筛选以大学结尾的学校这类需求，就可以使用模糊匹配来进行筛选，一般配合<code>where</code>子句使用，这里介绍两种模糊匹配的关键字<code>like</code>与<code>rlike</code>，其语法为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">列名 <span class="keyword">like</span> 通配符表达式</span><br><span class="line">列名 rlike 正则表达式</span><br></pre></td></tr></table></figure>
+<p>首先是<code>like</code>，<code>like</code>有三种支持的通配符，分别是<code>%</code>，<code>_</code>与<code>[]</code>，但是<code>MySQL</code>不支持<code>[]</code>通配符（<code>rlike</code>中可以用），故这里只讲前两种。<code>%</code>用于代表任意多个字符，<code>_</code>通配符用于代表一个字符，写模糊筛选语句的过程就是将需求转换为通配符表达式的过程，下面来看例子。</p>
+<p>假如，现在有一个列<code>name</code>，我要筛选出所有姓李的人，那就是第一个字符为李，而后面可以跟上若干个字符，所以通配符表达式为<code>'李%'</code>，写为<code>where</code>子句为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">where</span> name <span class="keyword">like</span> <span class="string">&#x27;李%&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>再比如，我们要筛选出姓李且姓名为两个字的人，则就是第一个字符为李，而后面只能跟上一个字符，所以通配符表达式为<code>'李_'</code>，写为<code>where</code>子句为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">where</span> name <span class="keyword">like</span> <span class="string">&#x27;李_&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>当然<code>like</code>也支持<code>not</code>关键字，也就是反向筛选，例如筛选出不姓李的人，就是</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">where</span> name <span class="keyword">not</span> <span class="keyword">like</span> <span class="string">&#x27;李%&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>然后是<code>rlike</code>，可以看到<code>like</code>只能解决一下比较简单的模糊匹配问题，复杂的模糊匹配问题就要使用到<code>rlike</code>。</p>
+<p><code>rlike</code>使用的是正则表达式，这与<code>like</code>的逻辑很不一样，例如<code>like '张伟'</code>筛选出来的结果只有“张伟”，而<code>rlike '张伟'</code>会筛选出所有包含“张伟”的结果，如“张伟伟”等，而如果只要筛选出“张伟”，则是在现有表达式上用通配符做限制，如<code>rlike '^张伟$'</code>，表示以张伟开头，以张伟结尾，这样就能只筛选出“张伟”了。</p>
+<p>下面来看一些正则表达式的常用通配符</p>
+<blockquote>
+<p>^: 匹配开头，如^s匹配以s开头的字符串。</p>
+<p>$：匹配结尾，如s$匹配以s结尾的字符串。</p>
+<p>[]：匹配任意一个[]内的字符，如[abc],[012]，也可以使用-字符来指定范围，如[a-c],[0-9]，还可以使用^，表示非，如[^abc]表示不为abc。</p>
+<p>*：匹配前面的子表达式零次或多次，如，zo* 能匹配 “z” 以及 “zoo”。* 等价于{0,}。</p>
+<p>+：匹配前面的子表达式一次或多次。例如，‘zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</p>
+<p>{n}：n 是一个非负整数。匹配确定的 n 次。例如，‘o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</p>
+<p>{n, m}：m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。m可以不填，表示无上限。</p>
+</blockquote>
+<p>用上面的通配符，就可以做到很多，例如筛选QQ号为10位的数据，那就是任意数字重复10次，且不能有任何其他字符，正则表达式为<code>'^[0-9]&#123;10&#125;$'</code>。</p>
+<h4 id="limlt"><a class="markdownIt-Anchor" href="#limlt"></a> limlt</h4>
+<p><code>limlt</code>写于<code>SQL</code>语句的最末端，用于限制输出数量，也可与<code>order by</code>子句配合输出指定排名数据，其语法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">limit n  # 输出前n条记录</span><br><span class="line">limit n, m  # 从第n条记录开始，返回m条记录</span><br></pre></td></tr></table></figure>
+<p>用表<code>studentscore</code>举例，例如输出前2条数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> studentscore limit <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>例如输出分数前三高的三条记录</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> studentscore </span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span> limit <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<p>有时候还会遇到一些需求，例如以3条记录为一页，输出第三页，这就可以转化为，跳过前两页，也就是6条记录，输出一页数量的记录，也就是3条记录，因此可以写为<code>limit 6, 3</code></p>
+<h2 id="聚集函数"><a class="markdownIt-Anchor" href="#聚集函数"></a> 聚集函数</h2>
+<p>聚集函数就是常见的<strong>统计函数</strong>，如<code>sum(), avg(), count(), max(), min()</code>等，大多数情况下，聚集函数还需要配合<code>group by</code>子句使用，还是使用上文的表<code>studentscore</code>来举例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">	<span class="built_in">sum</span>(score) <span class="keyword">as</span> sum_score, </span><br><span class="line">	<span class="built_in">avg</span>(score) <span class="keyword">as</span> avg_score, </span><br><span class="line">	<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">as</span> cc</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">sum_score</th>
+<th style="text-align:center">avg_score</th>
+<th style="text-align:center">cc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">290</td>
+<td style="text-align:center">72.5</td>
+<td style="text-align:center">4</td>
+</tr>
+</tbody>
+</table>
+<p><code>sum(score)</code>会输出整个表score的和，<code>avg(score)</code>会输出整个表score的平均值，<code>count(*)</code>会输出整个表的记录条数</p>
+<blockquote>
+<p><strong>注：</strong></p>
+<ol>
+<li><code>as</code>为重命名语法，可以重命名列名，还有表名（后文会讲）</li>
+<li>由于<code>count()</code>函数起计数功能，在<strong>没有null</strong>的情况下，填任何列结果都是一样的，所以一般写<code>count(*)</code></li>
+</ol>
+</blockquote>
+<p>可以注意到，使用聚集函数后整个表将会改变形状，这时候在<code>select</code>中写入无关列名会报错，如<code>select id</code></p>
+<h3 id="group-by"><a class="markdownIt-Anchor" href="#group-by"></a> group by</h3>
+<p><code>group by</code>子句的作用是分组，比如现在我们要统计各课程的平均成绩，那就可以使用<code>group by</code>子句，按照课程编号分组，再使用聚集函数进行统计计算，代码如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> lesson, <span class="built_in">avg</span>(score) <span class="keyword">as</span> avg_score</span><br><span class="line"><span class="keyword">from</span> studentscore</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> lesson;</span><br></pre></td></tr></table></figure>
+<p>输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">avg_score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">70</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+</tr>
+</tbody>
+</table>
+<p>与上一个例子相同，这时候在<code>select</code>中写入无关列名会报错（只有用于分组的列是相关的）</p>
+<h3 id="补充-2"><a class="markdownIt-Anchor" href="#补充-2"></a> 补充</h3>
+<h4 id="count与null"><a class="markdownIt-Anchor" href="#count与null"></a> count()与null</h4>
+<p>将表<code>studentscore</code>的数据改为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">null</td>
+</tr>
+</tbody>
+</table>
+<p>这时，<code>count(*)</code>，<code>count(lesson)</code>，<code>count(score)</code>分别会输出4,4,3。也就是说，<code>count()</code>会不统计空值。</p>
+<blockquote>
+<p>注：如果有全空的列，则<code>count()</code>会输出0，而不是<code>null</code></p>
+</blockquote>
+<h4 id="count与distinct"><a class="markdownIt-Anchor" href="#count与distinct"></a> count()与distinct</h4>
+<p><code>distinct</code>关键字的作用是去重，这也可以与<code>count()</code>配合使用，就拿表<code>studentscore</code>来说，假设现在我们想要统计学生数量，就可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="keyword">distinct</span> id)</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>这会计数所有不重复的id。</p>
+<p>当然，还有更复杂的用法，比如现在我们要统计所有学生说选修的课程总数，可以看到在上述表格中，是存在两条id与lesson均相同的记录的，这可能是补考或者重修之类的原因，所以，我们就可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="keyword">distinct</span> id, lesson)</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>这会计数所有不重复的id与lesson的组合，这跟在<code>select</code>中使用是相同的。</p>
+<p>在更加现实的场景中，类似的需求并不少见，比如<strong>用户活跃量</strong>。假设现在每次用户访问，都会在数据库中留下一条记录，一个用户每天可能会访问多次，留下多条记录，但是在计数时我们只能统计为一个<strong>活跃日</strong>，现在我们要这个月所有用户的活跃天数之和，那就可以写为<code>count(distinct id, day)</code>。（id为用户账号，day为访问时的日期，这里默认该数据表是一个月的数据，没有做月份的筛选）</p>
+<h4 id="concat家族"><a class="markdownIt-Anchor" href="#concat家族"></a> concat()家族</h4>
+<p><code>concat()</code>家族包括<code>concat()</code>，<code>concat_ws()</code>与<code>group_concat()</code>，用于连接数值，字符串。首先是<code>concat()</code>函数，其语法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">concat(字符串<span class="number">1</span>, 字符串<span class="number">2</span>, ...)</span><br></pre></td></tr></table></figure>
+<p>用表表<code>studentscore</code>举例，现在我们要给分数写上单位分，就可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id, lesson, concat(score, <span class="string">&#x27;分&#x27;</span>) <span class="keyword">as</span> score</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>输出如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90分</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80分</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">50分</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">70分</td>
+</tr>
+</tbody>
+</table>
+<p><code>concat_ws()</code>函数在此基础上增加了选择分隔符的功能，其语法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">concat_ws(分隔符, 字符串<span class="number">1</span>, 字符串<span class="number">2</span>, ...)  # 默认分隔符为逗号</span><br></pre></td></tr></table></figure>
+<p>例如，我们要在一列中包含课程编号与分数，用-做分隔符，代码如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id, concat_ws(<span class="string">&#x27;-&#x27;</span>, lesson, score) <span class="keyword">as</span> lesson_score</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>输出如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson_score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1-90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2-80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1-50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1-70</td>
+</tr>
+</tbody>
+</table>
+<p><code>group_concat()</code>函数用于配合<code>group by</code>子句做输出，用于将同一个分组的数据整合到一起。其语法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">group_concat([<span class="keyword">distinct</span>] 要连接的字段 [<span class="keyword">order</span> <span class="keyword">by</span> 排序字段 <span class="keyword">asc</span><span class="operator">/</span><span class="keyword">desc</span> ] [separator <span class="string">&#x27;分隔符&#x27;</span>])  # []内为可选参数</span><br></pre></td></tr></table></figure>
+<p>例如，现在我们要输出参加了每个课程考试的学生id，并用逗号分隔，则可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> lesson, group_concat(<span class="keyword">distinct</span> id separator <span class="string">&#x27;,&#x27;</span>) <span class="keyword">as</span> lesson_id</span><br><span class="line"><span class="keyword">from</span> studentscore</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> lesson;</span><br></pre></td></tr></table></figure>
+<p>输出如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">lesson_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1,2</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="连接表"><a class="markdownIt-Anchor" href="#连接表"></a> 连接表</h2>
+<p>连接表用于需要查询或用于判断分组的数据分别存在不同的表中，这时候可以使用连接表，将多个表连接起来，再进行查询。在实际应用场景中，由于数据库设计的需要，经常会出现数据分散在多个表中的情况，故这也是一个很常用的语法。具体的语法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> 表<span class="number">1</span></span><br><span class="line">连接语句 表<span class="number">2</span></span><br><span class="line"><span class="keyword">on</span> 连接键</span><br></pre></td></tr></table></figure>
+<p>连接语句常用的有3个，分别为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span>  # 对应连接，只保留两个表中都有的部分，不会出现<span class="keyword">null</span></span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span>  # 左连接，保留左表的所有信息，会出现<span class="keyword">null</span></span><br><span class="line"><span class="keyword">right</span> <span class="keyword">join</span>  # 同上，改为右表</span><br></pre></td></tr></table></figure>
+<p>接下来我们通过例子来具体理解这4种连接方式，假设现在有三个表，表<code>studentscore</code>，这里我们把该表的数据再放上来，便于观看</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">70</td>
+</tr>
+</tbody>
+</table>
+<p>再增加一个表<code>lessonname</code>，用于储存课程名称（lesson为课程编号，name为课程名称）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">语文</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">数学</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">物理</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">化学</td>
+</tr>
+</tbody>
+</table>
+<p>表<code>student</code>，用于储存学生信息（id为学生学号，age为学生年龄）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">17</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">18</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">18</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">19</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inner-join"><a class="markdownIt-Anchor" href="#inner-join"></a> inner join</h3>
+<p>现在我们来看具体需求，假设现在我要查询所有的成绩记录，要包括学号，课程名，成绩，那么这就要涉及表<code>studentscore</code>与表<code>lessonname</code>，具体查询语句如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> ss.id, ln.name, ss.score</span><br><span class="line"><span class="keyword">from</span> studentscore ss</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> lessonname ln</span><br><span class="line"><span class="keyword">on</span> ss.lesson <span class="operator">=</span> ln.lesson;</span><br></pre></td></tr></table></figure>
+<p>这里，表名后面的<code>ss</code>与<code>ln</code>为<strong>重命名</strong>，中间可以写一个<code>as</code>，也可以省略（同列的重命名），重命名是为了方便写下面的连接条件以及列名。还有一个需要注意的点，因为在两个表连接起来之后，会有一些同名的列，比如上述语句就有两个<code>lesson</code>，所以，我们需要在列名前加上表名，以准确的告诉<code>SQL</code>具体的列。（这里建议，在涉及连接的语句中，将用到的列名前全部加上表名，不管其是否真的需要，这会减少很多奇怪的bug）。最后<code>inner join</code>也可以写为<code>join</code>。</p>
+<p>现在，让我们来看看上述语句的输出，其输出如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">name</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">语文</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">数学</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">语文</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">语文</td>
+<td style="text-align:center">70</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，只有两个表的<code>lesson</code>能对上的记录才会被取出</p>
+<p>接下来，如果我们要在上述基础上补充各学生的年龄，那么我们就需要连接三个表，其查询语句如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> ss.id, ln.name, ss.score, s.age</span><br><span class="line"><span class="keyword">from</span> studentscore ss</span><br><span class="line"><span class="keyword">join</span> lessonname ln</span><br><span class="line"><span class="keyword">on</span> ss.lesson <span class="operator">=</span> ln.lesson</span><br><span class="line"><span class="keyword">join</span> student s</span><br><span class="line"><span class="keyword">on</span> ss.id <span class="operator">=</span> s.id;</span><br></pre></td></tr></table></figure>
+<p>其输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">name</th>
+<th style="text-align:center">score</th>
+<th style="text-align:center">age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">语文</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">17</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">数学</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">17</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">语文</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">18</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">语文</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">18</td>
+</tr>
+</tbody>
+</table>
+<h3 id="leftright-join"><a class="markdownIt-Anchor" href="#leftright-join"></a> left/right join</h3>
+<p><code>left join</code>与<code>right join</code>是相同的，就是调换了一下表的位置而已，故这里只讲<code>left join</code>。</p>
+<p>假设现在有这样的需求，我们要查询所有学生的考试信息，包括学号，课程编号与成绩，但是要求保留所有学生的信息，也就是，<strong>就算这个学生一条考试成绩的记录都没有，你也要给我报空，告诉我这个学生啥都没考</strong>。这就需要用到<code>left join</code>来<strong>保留左表的所有信息</strong>（先写的那个是左表），具体查询语句如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s.id, ss.lesson, ss.score</span><br><span class="line"><span class="keyword">from</span> student s</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> studentscore ss</span><br><span class="line"><span class="keyword">on</span> s.id <span class="operator">=</span> ss.id;</span><br></pre></td></tr></table></figure>
+<p>其输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">70</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">null</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">null</td>
+<td style="text-align:center">null</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，左表中的id取3,4的记录，在右表中是没有对应记录的，但是由于这是左连接，所以左表的所有信息都会被保留，就算右表没有对应记录，也需要返回null</p>
+<h3 id="补充-3"><a class="markdownIt-Anchor" href="#补充-3"></a> 补充</h3>
+<h4 id="多个连接键"><a class="markdownIt-Anchor" href="#多个连接键"></a> 多个连接键</h4>
+<p>在连接表的过程中，可能会遇到需要指定多个连接键的情况，这时候可以用<code>and</code>连接多个连接键，例如，为了防止分数出错，一次考试中分别有两个老师打分，其分数分别记录在表<code>studentscore1</code>与表<code>studentscore2</code>中，数据如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">70</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">55</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">70</td>
+</tr>
+</tbody>
+</table>
+<p>现在我们需要对比两个老师的打分，那么就需要将两个表连接起来，并且连接键为id与lesson均相等，代码为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> s1.id, s1.lesson, s1.score <span class="keyword">as</span> score1, s2.score <span class="keyword">as</span> score2</span><br><span class="line"><span class="keyword">from</span> studentscore1 s1</span><br><span class="line"><span class="keyword">join</span> studentscore2 s2</span><br><span class="line"><span class="keyword">on</span> s1.id <span class="operator">=</span> s2.id <span class="keyword">and</span> s1.lesson<span class="operator">=</span>s2.lesson;</span><br></pre></td></tr></table></figure>
+<p>输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score1</th>
+<th style="text-align:center">score2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">55</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">70</td>
+</tr>
+</tbody>
+</table>
+<h2 id="组合查询"><a class="markdownIt-Anchor" href="#组合查询"></a> 组合查询</h2>
+<p>如果说连接表是在列方向上的连接，那么组合查询就是行方向上的连接，用关键字<code>union</code>实现。用表<code>studentscore</code>与表<code>student</code>举例，例如，现在我们要查找有一门考试分数超过70分，或者年龄为18岁学生，那么我们可以对这两个条件分别查找，再组合成一个表，代码如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> id</span><br><span class="line"><span class="keyword">from</span> studentscore</span><br><span class="line"><span class="keyword">where</span> score <span class="operator">&gt;</span> <span class="number">70</span></span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> uid</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> age <span class="operator">=</span> <span class="number">18</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> id;</span><br></pre></td></tr></table></figure>
+<p>输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+</tr>
+</tbody>
+</table>
+<p>很容易想到，组合的两个表的列需要完全一样。再者，如果需要排序，那么<code>order by</code>子句需要写在整个语句的最后，并且只能有一个<code>order by</code>子句。最后，<code>union</code>关键字会对结果进行去重，例如上述代码，两个查询的结果分别为<code>1, 2</code>与<code>2, 3</code>，但是最后的输出仅有一个<code>2</code>。</p>
+<p>如果想要不去重的结果，则可以使用<code>union all</code>关键字，例如将上述代码改为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> id</span><br><span class="line"><span class="keyword">from</span> studentscore</span><br><span class="line"><span class="keyword">where</span> score <span class="operator">&gt;</span> <span class="number">70</span></span><br><span class="line"><span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="keyword">select</span> uid</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> age <span class="operator">=</span> <span class="number">18</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> id;</span><br></pre></td></tr></table></figure>
+<p>则输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="子查询"><a class="markdownIt-Anchor" href="#子查询"></a> 子查询</h2>
+<p>子查询本质就是查询的嵌套，其语法就是用括号括住一个查询，将其看做一个新的表。用表<code>studentscore</code>与表<code>student</code>举例，例如，现在我们要查看成年学生的考试信息，就可以用子查询与<code>in</code>关键字配合</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">from</span> studentscore</span><br><span class="line"><span class="keyword">where</span> id <span class="keyword">in</span> (<span class="keyword">select</span> id <span class="keyword">from</span> student <span class="keyword">where</span> age <span class="operator">&gt;=</span> <span class="number">18</span>);</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，与<code>in</code>关键字配合时子查询只能有一个查询列名。</p>
+<p>再比如，我们想要输出最高的学生总分，那我们需要先用一个表计算出总分，再在这个表里求最大值，可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">max</span>(sum_score) <span class="keyword">as</span> max_sum_score</span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> id, <span class="built_in">sum</span>(score) <span class="keyword">as</span> sum_score <span class="keyword">from</span> studentscore <span class="keyword">group</span> <span class="keyword">by</span> id);</span><br></pre></td></tr></table></figure>
+<p>上述代码在子查询的括号后可以加上<code>as 表名</code>用于重命名子查询，在需要多表连接的时候需要用到</p>
+<p>这个需求也可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> sc <span class="keyword">as</span> (</span><br><span class="line">    <span class="keyword">select</span> id, <span class="built_in">sum</span>(score) <span class="keyword">as</span> sum_score </span><br><span class="line">    <span class="keyword">from</span> studentscore </span><br><span class="line">    <span class="keyword">group</span> <span class="keyword">by</span> id</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">max</span>(sum_score) <span class="keyword">as</span> max_sum_score</span><br><span class="line"><span class="keyword">from</span> sc;</span><br></pre></td></tr></table></figure>
+<p>就是在最前面定义一个表，其语法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> 表名<span class="number">1</span> <span class="keyword">as</span> (</span><br><span class="line">    表内容<span class="number">1</span></span><br><span class="line">),</span><br><span class="line">表名<span class="number">2</span> <span class="keyword">as</span> (</span><br><span class="line">	表内容<span class="number">2</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="条件判断函数"><a class="markdownIt-Anchor" href="#条件判断函数"></a> 条件判断函数</h2>
+<p>条件判断语句也就类似于一般编程语言的<code>if-else</code>结构，用起来很方便，接下来就来看看<code>SQL</code>里的条件语句</p>
+<h3 id="case-when"><a class="markdownIt-Anchor" href="#case-when"></a> case when</h3>
+<p><code>case when</code>语句是最类似与<code>if-else</code>的，接下来我们来看看<code>case when</code>语句的具体语法，其有两种语法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 用法<span class="number">1</span></span><br><span class="line"><span class="keyword">case</span> 列名 <span class="keyword">when</span> 预期值<span class="number">1</span> <span class="keyword">then</span> 对应结果<span class="number">1</span> <span class="keyword">when</span> 预期值<span class="number">2</span> <span class="keyword">then</span> 对应结果<span class="number">1</span> <span class="keyword">else</span> 对应结果<span class="number">3</span> <span class="keyword">end</span></span><br><span class="line"># 用法<span class="number">2</span></span><br><span class="line"><span class="keyword">case</span> <span class="keyword">when</span> 条件表达式<span class="number">1</span> <span class="keyword">then</span> 对应结果<span class="number">1</span> <span class="keyword">when</span> 条件表达式<span class="number">2</span> <span class="keyword">then</span> 对应结果<span class="number">2</span> <span class="keyword">else</span> 对应结果<span class="number">3</span> <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，这其实就是<code>if-else</code>的翻版，这可以用于各种子句中，例如<code>select</code>子句，以表<code>studentscore</code>举例，假设现在我们要输出学号，课程名字，成绩，并且我们知道课程编号对应的课程名字，就可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id, (<span class="keyword">case</span> lesson <span class="keyword">when</span> <span class="number">1</span> <span class="keyword">then</span> &quot;语文&quot; <span class="keyword">else</span> &quot;数学&quot; <span class="keyword">end</span>) <span class="keyword">as</span> name, score</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>其输出如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">name</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">语文</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">数学</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">语文</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">语文</td>
+<td style="text-align:center">70</td>
+</tr>
+</tbody>
+</table>
+<p>再比如，现在我们给学生的分数划分等级，大于等于90为优秀，80-90为良好，60-80为及格，小于60为不及格，则可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">	id, </span><br><span class="line">	lesson, </span><br><span class="line">	(<span class="keyword">CASE</span> </span><br><span class="line">     <span class="keyword">WHEN</span> score<span class="operator">&gt;=</span><span class="number">90</span> <span class="keyword">THEN</span> <span class="string">&#x27;优秀&#x27;</span> </span><br><span class="line">     <span class="keyword">WHEN</span> score<span class="operator">&gt;=</span><span class="number">80</span> <span class="keyword">THEN</span> <span class="string">&#x27;良好&#x27;</span> </span><br><span class="line">     <span class="keyword">WHEN</span> score<span class="operator">&gt;=</span><span class="number">60</span> <span class="keyword">THEN</span> <span class="string">&#x27;及格&#x27;</span> </span><br><span class="line">     <span class="keyword">ELSE</span> <span class="string">&#x27;不及格&#x27;</span> </span><br><span class="line">	<span class="keyword">END</span>) <span class="keyword">as</span> <span class="string">&#x27;level&#x27;</span></span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>其输出如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">优秀</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">良好</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">不及格</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">及格</td>
+</tr>
+</tbody>
+</table>
+<p>还可以配合聚合函数使用，用表<code>student</code>，例如，现在我们要计算大于等于18岁的学生数量，可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 写法<span class="number">1</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(<span class="keyword">case</span> <span class="keyword">when</span> age<span class="operator">&gt;=</span><span class="number">18</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) <span class="keyword">as</span> cnt</span><br><span class="line"><span class="keyword">from</span> student;</span><br><span class="line"># 写法<span class="number">2</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="keyword">case</span> <span class="keyword">when</span> age<span class="operator">&gt;=</span><span class="number">18</span> <span class="keyword">then</span> age <span class="keyword">else</span> <span class="keyword">null</span> <span class="keyword">end</span>) <span class="keyword">as</span> cnt</span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure>
+<p>则输出为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cnt</span><br><span class="line">------</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h3 id="if"><a class="markdownIt-Anchor" href="#if"></a> if</h3>
+<p><code>if</code>语句的作用与<code>case when</code>语句基本相同，但是其只能填入一个条件，语法为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(条件, 条件为真对应结果, 条件不为真对应结果)</span><br></pre></td></tr></table></figure>
+<p>使用<code>if</code>语句重写一下上述例子</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 输出课程名字</span><br><span class="line"><span class="keyword">select</span> id, if(lesson <span class="operator">=</span> <span class="number">1</span>, &quot;语文&quot;, &quot;数学&quot;) <span class="keyword">as</span> name, score</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br><span class="line"></span><br><span class="line"># 成年学生数量</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(if(age<span class="operator">&gt;=</span><span class="number">18</span>, age, <span class="keyword">null</span>)) <span class="keyword">as</span> cnt</span><br><span class="line"><span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure>
+<h3 id="ifnull"><a class="markdownIt-Anchor" href="#ifnull"></a> ifnull</h3>
+<p><code>ifnull</code>语句是用于处理空值的，其语法为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifnull(列名, 若该列数值为空代替使用的值)</span><br></pre></td></tr></table></figure>
+<p>比如这个带空值的表<code>studentscore</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">null</td>
+</tr>
+</tbody>
+</table>
+<p>假设现在要计算各学生所有分数的和，空值记为0分则可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id, <span class="built_in">sum</span>(ifnull(score, <span class="number">0</span>)) <span class="keyword">as</span> sum_score</span><br><span class="line"><span class="keyword">from</span> studentscore</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> id;</span><br></pre></td></tr></table></figure>
+<h2 id="窗口函数"><a class="markdownIt-Anchor" href="#窗口函数"></a> 窗口函数</h2>
+<p>在使用<code>group by</code>子句时，会改变数据表的形状，而窗口函数就可以在不改变数据表形状下，使用统计函数，计算统计指标，并将其作为新的一列加入数据表，其具体语法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">窗口函数 <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> 分组列名 <span class="keyword">order</span> <span class="keyword">by</span> 排序列名 框架)  # <span class="keyword">over</span>中的参数均可选</span><br></pre></td></tr></table></figure>
+<p>用求各课程平均分为例，之前使用<code>group by</code>子句的写法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> lesson, <span class="built_in">avg</span>(score) <span class="keyword">as</span> avg_score</span><br><span class="line"><span class="keyword">from</span> studentscore</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> lesson;</span><br></pre></td></tr></table></figure>
+<p>用窗口函数的写法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>, <span class="built_in">avg</span>(score) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> lesson) <span class="keyword">as</span> avg_score</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>最终输出如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score</th>
+<th style="text-align:center">avg_score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">70</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">70</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">70</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，课程的平均分以新列的形式出现在了表的最后，并且表原本的信息均可以得到保留。</p>
+<h3 id="聚合函数"><a class="markdownIt-Anchor" href="#聚合函数"></a> 聚合函数</h3>
+<p>接下来我们来看看聚合函数作为窗口函数的用法，这与<code>group by</code>子句类似，其效果上述例子已经看过了。具体的来说，将原本写在<code>group by</code>子句后的列名写在<code>partition by</code>后即可，同理<code>partition by</code>可以为空，例如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>,</span><br><span class="line">	   <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">over</span>() <span class="keyword">as</span> cnt,  # 总记录数</span><br><span class="line">	   <span class="built_in">sum</span>(score) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> id) <span class="keyword">as</span> sum_score,  # 每个学生的总分</span><br><span class="line">	   <span class="built_in">max</span>(score) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> lesson) <span class="keyword">as</span> max_score  # 每个科目的最高分</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>当然，聚合函数也可以配合<code>order by</code>使用，其主要在带时间的数据中会被用到，我们用一个例子来理解一下，现在修改表<code>studentscore</code>，给条记录加上一个时间，修改后如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">time</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-07-02 09:05:01</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2021-07-03 09:05:01</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-07-05 09:05:01</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-09-10 09:05:01</td>
+<td style="text-align:center">70</td>
+</tr>
+</tbody>
+</table>
+<p>现在我们的需求是输出全表及该学生在当前时间下所考到的最高分，代码如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>,</span><br><span class="line">	   <span class="built_in">max</span>(score) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> id <span class="keyword">order</span> <span class="keyword">by</span> <span class="type">time</span>) <span class="keyword">as</span> mcnt</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>输出如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">time</th>
+<th style="text-align:center">score</th>
+<th style="text-align:center">mcnt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-07-02 09:05:01</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2021-07-03 09:05:01</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-07-05 09:05:01</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-09-10 09:05:01</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">70</td>
+</tr>
+</tbody>
+</table>
+<h3 id="排序函数"><a class="markdownIt-Anchor" href="#排序函数"></a> 排序函数</h3>
+<h4 id="语法"><a class="markdownIt-Anchor" href="#语法"></a> 语法</h4>
+<p>然后是排序函数，常见的有<code>rank(), dense_rank(), row_number()</code>，这些函数都用于排序，一般配合<code>order by</code>使用，例如，现在要对表<code>studentscore</code>中的所有分数进行排序，写法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>, <span class="built_in">rank</span>() <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) <span class="keyword">as</span> score_rank</span><br><span class="line"><span class="keyword">from</span> studentscore;</span><br></pre></td></tr></table></figure>
+<p>输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score</th>
+<th style="text-align:center">score_rank</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">4</td>
+</tr>
+</tbody>
+</table>
+<p>这个写法就表名，根据列score降序（从大到小）进行排名。</p>
+<p>当然，还可以配合<code>partition by</code>一起使用，比如说，现在我们要输出每一个科目的成绩排名，那就需要按照lesson进行分组，再按照score降序进行排名，写出来就是</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>, <span class="built_in">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> lesson <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) <span class="keyword">as</span> score_rank</span><br><span class="line"><span class="keyword">from</span> studentscore</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> lesson;</span><br></pre></td></tr></table></figure>
+<p>输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">score</th>
+<th style="text-align:center">score_rank</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">90</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">80</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>当然，还可以按照多个列进行排序，比如，对于相同的得分就按照id大小排序，那上述代码可以改为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>, <span class="built_in">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> lesson <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>, id) <span class="keyword">as</span> score_rank</span><br><span class="line"><span class="keyword">from</span> studentscore</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> lesson;</span><br></pre></td></tr></table></figure>
+<h4 id="排序函数的区别"><a class="markdownIt-Anchor" href="#排序函数的区别"></a> 排序函数的区别</h4>
+<p>那么排序函数<code>rank(), dense_rank(), row_number()</code>之间有什么区别呢，主要区别在出现相同的排名时的处理函数，我们通过一个例子来看看</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">score</th>
+<th style="text-align:center">rank()</th>
+<th style="text-align:center">dense_rank()</th>
+<th style="text-align:center">row_number()</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">90</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">90</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">80</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">80</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">5</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，在出现相同的排名时，<code>rank(), dense_rank()</code>都会输出同样的排名，不同的是<code>rank()</code>输出的排名是间断的，而<code>dense_rank()</code>输出的排名是连续的。而<code>row_number()</code>则不会输出不同的排名，而是自己分配一个先后顺序。</p>
+<h3 id="补充-4"><a class="markdownIt-Anchor" href="#补充-4"></a> 补充</h3>
+<h4 id="使用排序函数求中位数"><a class="markdownIt-Anchor" href="#使用排序函数求中位数"></a> 使用排序函数求中位数</h4>
+<p>在不支持使用聚合函数直接求中位数的<code>SQL</code>环境中，可以使用排序函数求中位数，以表<code>studentscore</code>为例，求出每个学生的分数中位数，代码如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> rr <span class="keyword">as</span> (</span><br><span class="line">    <span class="keyword">select</span> id, </span><br><span class="line">           <span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> id <span class="keyword">order</span> <span class="keyword">by</span> score) <span class="keyword">as</span> rs, </span><br><span class="line">           <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> id) <span class="keyword">as</span> cnt</span><br><span class="line">    <span class="keyword">from</span> studentscore</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> id, <span class="built_in">AVG</span>(score) <span class="keyword">AS</span> median</span><br><span class="line"><span class="keyword">from</span> rr</span><br><span class="line"><span class="keyword">where</span> rs <span class="keyword">in</span> (<span class="built_in">floor</span>((cnt <span class="operator">+</span> <span class="number">1</span>)<span class="operator">/</span><span class="number">2</span>), <span class="built_in">ceiling</span>((cnt <span class="operator">+</span> <span class="number">1</span>)<span class="operator">/</span><span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<p>具体思路为，先计算出每条记录的排名以及总数，即上述定义的表<code>rr</code>，此处排名使用<code>row_number()</code>函数或<code>rank()</code>函数均可，然后将总数除以2，若为奇数，则会得到一个整数，该整数对应排名的记录即为中位数，若为偶数，则会得到一个小数，此时需要求最近的两个整数（如4.5就取4，5，用<code>floor()</code>函数与<code>ceiling()</code>函数就可以实现），取出两个整数对应排名的记录，再进行平均则得到中位数。</p>
+<h3 id="前后函数"><a class="markdownIt-Anchor" href="#前后函数"></a> 前后函数</h3>
+<p>前后函数包括<code>lead()</code>函数与<code>lag()</code>函数，其作用是将数据向前后位移，这样说有点抽象，我们用具体了例子来说明。用带时间的表<code>studentscore</code>来举例，数据如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">time</th>
+<th style="text-align:center">score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-07-02 09:05:01</td>
+<td style="text-align:center">90</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2021-07-03 09:05:01</td>
+<td style="text-align:center">80</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-07-05 09:05:01</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-09-10 09:05:01</td>
+<td style="text-align:center">70</td>
+</tr>
+</tbody>
+</table>
+<p>首先我们来看看语法，<code>lead()</code>函数与<code>lag()</code>函数的语法都很简单</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">lead</span>(列名, 位移长度, <span class="keyword">null</span>值处理)  # 向上位移</span><br><span class="line"><span class="built_in">lag</span>(列名, 位移长度, <span class="keyword">null</span>值处理)  # 向下位移</span><br></pre></td></tr></table></figure>
+<p>其中null值处理可以不填。</p>
+<p>现在，我们的需求是求出每个学生相近的两次考试时间的时间差，也被称为时间窗，具体写法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>, <span class="built_in">lead</span>(<span class="type">time</span>, <span class="number">1</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid <span class="keyword">order</span> <span class="keyword">by</span> <span class="type">time</span>) <span class="keyword">as</span> tt, timestampdiff(<span class="keyword">day</span>, <span class="type">time</span>, <span class="built_in">lead</span>(<span class="type">time</span>, <span class="number">1</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid <span class="keyword">order</span> <span class="keyword">by</span> <span class="type">time</span>)) <span class="keyword">as</span> time_window</span><br><span class="line"><span class="keyword">from</span> studentscore</span><br></pre></td></tr></table></figure>
+<p>上述代码中，<code>timestampdiff()</code>函数用于计算时间差，具体可见下文时间数据相关函数部分，代码输出如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">id</th>
+<th style="text-align:center">lesson</th>
+<th style="text-align:center">time</th>
+<th style="text-align:center">tt</th>
+<th style="text-align:center">time_window</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-07-02 09:05:01</td>
+<td style="text-align:center">2021-07-03 09:05:01</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2021-07-03 09:05:01</td>
+<td style="text-align:center">null</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-07-05 09:05:01</td>
+<td style="text-align:center">2021-09-10 09:05:01</td>
+<td style="text-align:center">67</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2021-09-10 09:05:01</td>
+<td style="text-align:center">null</td>
+<td style="text-align:center">null</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，time列被整体向上位移了一个单位，并且由于没有填写null值的处理方式，所以缺失的值会直接为null（如果写的是<code>lead(time, 1, 0)</code>则缺失值为0）。还需要注意的是，窗口函数中根据<code>time</code>排序，这样才能确保是相邻的两次考试时间。</p>
+<h3 id="框架"><a class="markdownIt-Anchor" href="#框架"></a> 框架</h3>
+<p>最后我们来讲前面一直没有用到的一个参数，框架。框架用于进一步限制窗口大小，其分为<code>rows</code>与<code>range</code>两种模式</p>
+<h4 id="rows模式"><a class="markdownIt-Anchor" href="#rows模式"></a> rows模式</h4>
+<p><code>rows</code>模式类似于滑动窗口，我们先从一个例子入手，现在有一份关于销售量的表<code>sale</code>，数据如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">sale_date</th>
+<th style="text-align:center">sale_cnt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2021-08-30 09:05:01</td>
+<td style="text-align:center">40</td>
+</tr>
+<tr>
+<td style="text-align:center">2021-08-31 09:05:01</td>
+<td style="text-align:center">60</td>
+</tr>
+<tr>
+<td style="text-align:center">2021-09-01 09:05:01</td>
+<td style="text-align:center">70</td>
+</tr>
+<tr>
+<td style="text-align:center">2021-09-02 09:05:01</td>
+<td style="text-align:center">30</td>
+</tr>
+<tr>
+<td style="text-align:center">2021-09-03 09:05:01</td>
+<td style="text-align:center">50</td>
+</tr>
+</tbody>
+</table>
+<p>我们要计算出从九月一号起，每一天的累计3天销量。这时候，我们就需要一个大小为3的滑动窗口，先计算从8-30到9-1的平均销量，然后往下滑动一格，再计算从8-31到9-2的平均销量，以此类推。这样的滑动窗口就可以用<code>rows</code>模式来实现。</p>
+<p><code>rows</code>模式是根据写好的规格，以当前行为参考，计算出限制窗口，其有两种写法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">rows</span> 指定行  # 从当前行开始到指定行或从指定行开始到当前行</span><br><span class="line"><span class="keyword">rows</span> <span class="keyword">between</span> 开始行 <span class="keyword">and</span> 结束行  # 从开始行开始到结束行</span><br></pre></td></tr></table></figure>
+<p>可填参数有以下几个</p>
+<blockquote>
+<p>current row：当前行<br />
+unbounded preceding：当前行上侧所有行，也就是第一行<br />
+unbounded following：当前行下侧所有行，也就是最后一行<br />
+expr preceding：当前行上侧expr行(expr可以是数字，也可以是表达式)<br />
+expr following：当前行下侧expr行(expr可以是数字，也可以是表达式)</p>
+</blockquote>
+<p>上述例子的需求，可以转化为计算从当前行上2行开始到当前行的平均销量，代码如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span>, <span class="built_in">avg</span>(sale_cnt) <span class="keyword">over</span>(<span class="keyword">rows</span> <span class="number">2</span> preceding) <span class="keyword">as</span> avg_sale_3</span><br><span class="line"><span class="keyword">from</span> sale;</span><br></pre></td></tr></table></figure>
+<p>上述代码的输出如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">sale_date</th>
+<th style="text-align:center">sale_cnt</th>
+<th style="text-align:center">avg_sale_3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2021-08-30 09:05:01</td>
+<td style="text-align:center">40</td>
+<td style="text-align:center">40</td>
+</tr>
+<tr>
+<td style="text-align:center">2021-08-31 09:05:01</td>
+<td style="text-align:center">60</td>
+<td style="text-align:center">100</td>
+</tr>
+<tr>
+<td style="text-align:center">2021-09-01 09:05:01</td>
+<td style="text-align:center">70</td>
+<td style="text-align:center">170</td>
+</tr>
+<tr>
+<td style="text-align:center">2021-09-02 09:05:01</td>
+<td style="text-align:center">30</td>
+<td style="text-align:center">160</td>
+</tr>
+<tr>
+<td style="text-align:center">2021-09-03 09:05:01</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">150</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，由于窗口函数计算时还是从第一行开始计算的，所以也会以8-30与8-31为中心计算，而其前两行中有空行，所以会被忽视。所以，上述需求的完整代码其实要这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> avg_sale <span class="keyword">as</span> (</span><br><span class="line">    <span class="keyword">select</span> <span class="operator">*</span>, <span class="built_in">avg</span>(sale_cnt) <span class="keyword">over</span>(<span class="keyword">rows</span> <span class="number">2</span> preceding) <span class="keyword">as</span> avg_sale_3</span><br><span class="line">	<span class="keyword">from</span> sale</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> sale_date, avg_sale_3</span><br><span class="line"><span class="keyword">from</span> avg_sale</span><br><span class="line"><span class="keyword">where</span> date_format(sale_date, &quot;%Y%m%d&quot;) <span class="operator">&gt;=</span> <span class="number">20210701</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="range模式"><a class="markdownIt-Anchor" href="#range模式"></a> range模式</h4>
+<p><code>range</code>模式是根据当前行的<code>order by</code>列值，来筛选符合所写规则的行。其语法为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">range</span> 指定值  # 筛选列值属于从当前值到指定值或从指定值到当前值的行</span><br><span class="line"><span class="keyword">range</span> <span class="keyword">between</span> 开始值 <span class="keyword">and</span> 结束值  # 筛选列值属于从开始值到结束值的行</span><br></pre></td></tr></table></figure>
+<p>其可填参数不变，但意义不同</p>
+<blockquote>
+<p>current row：当前值<br />
+unbounded preceding：无下限，也就是小多少都可以<br />
+unbounded following：无上限，也就是大多少都可以<br />
+expr preceding：当前行的列值小expr(expr可以是数字，也可以是表达式)<br />
+expr following：当前行的列值大expr(expr可以是数字，也可以是表达式)</p>
+</blockquote>
+<p>例如，当前值为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>，我要筛选出列值在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mi>n</mi><mo>−</mo><mn>3</mn><mo separator="true">,</mo><mi>n</mi><mo>+</mo><mn>4</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[n-3, n+4]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">]</span></span></span></span>之间的行，那就是写为<code>range between 3 preceding and 4 following</code></p>
+<h2 id="时间数据相关函数"><a class="markdownIt-Anchor" href="#时间数据相关函数"></a> 时间数据相关函数</h2>
+<p>时间类型的数据在实际的数据库中很常见，其一般格式为<code>2021-07-02 09:05:01</code>，下面介绍一些操作与处理时间数据的函数</p>
+<h3 id="date_format"><a class="markdownIt-Anchor" href="#date_format"></a> date_format()</h3>
+<p><code>date_format()</code>函数用于取出时间数据的各个部件，也就是可以根据实际要求取出年，月，日，小时，分钟，秒钟这些部分的一个或多个。以上述给的<code>2021-07-02 09:05:01</code>为例，介绍一下<code>date_format()</code>函数的语法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date_format(时间列名, <span class="string">&#x27;通配符与字符的组合&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>假设时间数据所在的列名为start_time，其中的数据为<code>2021-07-02 09:05:01</code>，常用的通配符有</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">date_format(start_time, <span class="string">&#x27;%Y&#x27;</span>)  # 函数值为<span class="number">2021</span></span><br><span class="line">date_format(start_time, <span class="string">&#x27;%m&#x27;</span>)  # 函数值为<span class="number">07</span></span><br><span class="line">date_format(start_time, <span class="string">&#x27;%d&#x27;</span>)  # 函数值为<span class="number">02</span></span><br><span class="line">date_format(start_time, <span class="string">&#x27;%H&#x27;</span>)  # 函数值为<span class="number">09</span></span><br><span class="line">date_format(start_time, <span class="string">&#x27;%i&#x27;</span>)  # 函数值为<span class="number">05</span></span><br><span class="line">date_format(start_time, <span class="string">&#x27;%s&#x27;</span>)  # 函数值为<span class="number">01</span></span><br></pre></td></tr></table></figure>
+<p>通配符也可以同时使用，以及与字符配合使用，比如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date_format(start_time, <span class="string">&#x27;%Y%m%d&#x27;</span>)  # 函数值为<span class="number">20210702</span></span><br><span class="line">date_format(start_time, <span class="string">&#x27;%Y-%m-%d&#x27;</span>)  # 函数值为<span class="number">2021</span><span class="number">-07</span><span class="number">-02</span></span><br><span class="line">date_format(start_time, <span class="string">&#x27;%Y-%m-%d %H:%i:%s&#x27;</span>)  # 函数值为<span class="number">2021</span><span class="number">-07</span><span class="number">-02</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span></span><br></pre></td></tr></table></figure>
+<p>想要得到周几也可以通过<code>date_format()</code>函数取出，使用通配符<code>&quot;%w&quot;</code>，输出为数字0-7（0为星期天），如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date_format(start_time, <span class="string">&#x27;%w&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><code>date_format()</code>函数可以配合多个子句使用，比如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> date_format(start_time, <span class="string">&#x27;%Y%m%d&#x27;</span>)  # 打印日期</span><br><span class="line"></span><br><span class="line"><span class="keyword">where</span> date_format(start_time, <span class="string">&#x27;%Y&#x27;</span>) <span class="operator">=</span> <span class="number">2021</span>  # 筛选<span class="number">2021</span>年的记录</span><br><span class="line"></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> date_format(start_time, <span class="string">&#x27;%Y%m&#x27;</span>)  # 根据月份分组</span><br></pre></td></tr></table></figure>
+<h3 id="date"><a class="markdownIt-Anchor" href="#date"></a> date()</h3>
+<p><code>date()</code>函数用于提取时间数据的年月日部分，输出格式为<code>%Y-%m-%d</code>，例如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">date</span>(<span class="number">2021</span><span class="number">-07</span><span class="number">-02</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span>)  # 输出为<span class="number">2021</span><span class="number">-07</span><span class="number">-02</span></span><br></pre></td></tr></table></figure>
+<h3 id="timestampdiff"><a class="markdownIt-Anchor" href="#timestampdiff"></a> timestampdiff()</h3>
+<p><code>timestampdiff()</code>函数用于计算两个时间数据之间的时间差，并且可以输出为各种单位，具体语法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timestampdiff(单位, 时间数据<span class="number">1</span>, 时间数据<span class="number">2</span>)  # 最终输出时间数据<span class="number">2</span><span class="operator">-</span>时间数据<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>其中，单位可以输入</p>
+<blockquote>
+<p>frac_second：毫秒<br />
+second：秒<br />
+minute：分钟<br />
+hour：小时<br />
+day：天<br />
+week：星期<br />
+month：月<br />
+quarter：季度<br />
+year：年</p>
+</blockquote>
+<p>例如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timestampdiff(<span class="keyword">day</span>, <span class="number">2021</span><span class="number">-07</span><span class="number">-02</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span>, <span class="number">2021</span><span class="number">-07</span><span class="number">-03</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span>)  # 输出 <span class="number">1</span></span><br><span class="line">timestampdiff(<span class="keyword">hour</span>, <span class="number">2021</span><span class="number">-07</span><span class="number">-02</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span>, <span class="number">2021</span><span class="number">-07</span><span class="number">-02</span> <span class="number">17</span>:<span class="number">05</span>:<span class="number">01</span>)  # 输出 <span class="number">8</span></span><br><span class="line">timestampdiff(<span class="keyword">minute</span>, <span class="number">2021</span><span class="number">-07</span><span class="number">-02</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span>, <span class="number">2021</span><span class="number">-07</span><span class="number">-02</span> <span class="number">11</span>:<span class="number">25</span>:<span class="number">01</span>)  # 输出 <span class="number">140</span></span><br></pre></td></tr></table></figure>
+<h3 id="datediff"><a class="markdownIt-Anchor" href="#datediff"></a> datediff()</h3>
+<p><code>datediff()</code>函数用于计算两个时间数据的日期差，语法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datediff(时间数据<span class="number">1</span>, 时间数据<span class="number">2</span>)  # 最终输出时间数据<span class="number">1</span><span class="operator">-</span>时间数据<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>例如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">datediff(<span class="number">2021</span><span class="number">-07</span><span class="number">-03</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span>, <span class="number">2021</span><span class="number">-07</span><span class="number">-02</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span>)  # 输出<span class="number">1</span></span><br><span class="line">datediff(<span class="number">2021</span><span class="number">-07</span><span class="number">-10</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span>, <span class="number">2021</span><span class="number">-07</span><span class="number">-02</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span>)  # 输出<span class="number">8</span></span><br></pre></td></tr></table></figure>
+<h3 id="timestampdiff与datediff的区别"><a class="markdownIt-Anchor" href="#timestampdiff与datediff的区别"></a> timestampdiff()与datediff()的区别</h3>
+<p><code>timestampdiff()</code>函数计算时会考虑时间数据的全部信息，再转换为具体单位，且转换时会直接丢弃小数。<code>datediff()</code>函数由于只用于计算日期差，所以是用时间数据的日期直接相减。例如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">timestampdiff(<span class="keyword">day</span>, <span class="number">2021</span><span class="number">-09</span><span class="number">-04</span> <span class="number">12</span>:<span class="number">00</span>:<span class="number">00</span>, <span class="number">2021</span><span class="number">-09</span><span class="number">-05</span> <span class="number">11</span>:<span class="number">00</span>:<span class="number">00</span>)  # 输出<span class="number">0</span></span><br><span class="line">datediff(<span class="number">2021</span><span class="number">-09</span><span class="number">-05</span> <span class="number">12</span>:<span class="number">00</span>:<span class="number">00</span>, <span class="number">2021</span><span class="number">-09</span><span class="number">-04</span> <span class="number">11</span>:<span class="number">00</span>:<span class="number">00</span>)  # 输出<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>这两个时间数据相差23小时，<code>timestampdiff()</code>函数转化为day时发现不满一天，则直接返回0，<code>datediff()</code>函数用日期直接相减则返回1。</p>
+<h3 id="date_add与date_sub"><a class="markdownIt-Anchor" href="#date_add与date_sub"></a> date_add()与date_sub()</h3>
+<p><code>date_add()</code>与<code>date_sub()</code>函数用于加减时间，其语法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date_add(时间, <span class="type">interval</span> 增加时间数 单位)</span><br><span class="line">date_sub(时间, <span class="type">interval</span> 减少时间数 单位)</span><br></pre></td></tr></table></figure>
+<p>其中，单位可填的有</p>
+<blockquote>
+<p>microsecond：毫秒<br />
+second：秒<br />
+minute：分钟<br />
+hour：小时<br />
+day：天<br />
+week：星期<br />
+month：月<br />
+quarter：季度<br />
+year：年</p>
+</blockquote>
+<p>例如要给时间增加5天，就是</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date_add(<span class="number">2021</span><span class="number">-07</span><span class="number">-10</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span>, <span class="type">interval</span> <span class="number">5</span> <span class="keyword">day</span>)  # 输出<span class="number">2021</span><span class="number">-07</span><span class="number">-15</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span></span><br></pre></td></tr></table></figure>
+<p>还可以使用复合型的写法，例如要给时间增加一个月3天，可以这么写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date_add(<span class="number">2021</span><span class="number">-07</span><span class="number">-10</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span>, <span class="type">interval</span> <span class="string">&#x27;1, 3&#x27;</span> month_day)  # 输出<span class="number">2021</span><span class="number">-08</span><span class="number">-13</span> <span class="number">09</span>:<span class="number">05</span>:<span class="number">01</span></span><br></pre></td></tr></table></figure>
+<h2 id="常用指标与场景"><a class="markdownIt-Anchor" href="#常用指标与场景"></a> 常用指标与场景</h2>
+<h3 id="留存率"><a class="markdownIt-Anchor" href="#留存率"></a> 留存率</h3>
+<p>在互联网行业中，留存率是一个重要且常用的指标。其百科定义如下：留存率是用于反映网站、互联网应用或网络游戏的运营情况的统计指标，其具体含义为在统计周期（周/月）内，每日活跃用户数在第N日仍启动该App的用户数占比的平均值。其中N通常取2、4、8、15、31，分别对应次日留存率、三日留存率、周留存率、半月留存率和月留存率。</p>
+<h4 id="次日留存率"><a class="markdownIt-Anchor" href="#次日留存率"></a> 次日留存率</h4>
+<p>以次日留存率为例，示例表<code>user_log</code>，数据如下（uid为用户id，dt为登录日期）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">uid</th>
+<th style="text-align:center">dt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-10</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-11</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-12</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-11</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-12</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-14</td>
+</tr>
+<tr>
+<td style="text-align:center">103</td>
+<td style="text-align:center">2021-07-11</td>
+</tr>
+<tr>
+<td style="text-align:center">103</td>
+<td style="text-align:center">2021-07-13</td>
+</tr>
+<tr>
+<td style="text-align:center">103</td>
+<td style="text-align:center">2021-07-14</td>
+</tr>
+<tr>
+<td style="text-align:center">104</td>
+<td style="text-align:center">2021-07-12</td>
+</tr>
+<tr>
+<td style="text-align:center">104</td>
+<td style="text-align:center">2021-07-13</td>
+</tr>
+<tr>
+<td style="text-align:center">104</td>
+<td style="text-align:center">2021-07-15</td>
+</tr>
+</tbody>
+</table>
+<p>这里使用的是经过去重的数据，实际场景中数据通常还需要经过<code>distinct</code>或<code>union</code>等处理</p>
+<p>现在的需求是，求每天的<strong>新用户</strong>的次日留存率。首先是判断新用户，只需要计算其第一次登录的日期即可，这里我们使用窗口函数在原表最后添加一列第一次登录日期</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> uid, dt, <span class="built_in">min</span>(dt) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid) <span class="keyword">as</span> f_dt</span><br><span class="line"><span class="keyword">from</span> user_log</span><br></pre></td></tr></table></figure>
+<p>然后我们就可以根据<code>f_dt</code>进行分组，<code>count(distinct uid)</code>计算当天新用户人数，判断次日登录只需要判断<code>dt</code>与<code>f_dt</code>加一天是否相等即可，完整代码如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> ul <span class="keyword">as</span> (</span><br><span class="line">    <span class="keyword">select</span> uid, dt, <span class="built_in">min</span>(dt) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid) <span class="keyword">as</span> f_dt</span><br><span class="line">    <span class="keyword">from</span> user_log</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> f_dt, <span class="built_in">sum</span>(if(dt <span class="operator">=</span> date_add(f_dt, <span class="type">interval</span> <span class="number">1</span> <span class="keyword">day</span>), <span class="number">1</span>, <span class="number">0</span>))<span class="operator">/</span><span class="built_in">count</span>(<span class="keyword">distinct</span> uid) <span class="keyword">as</span> left_rate</span><br><span class="line"><span class="keyword">from</span> ul</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> f_dt;</span><br></pre></td></tr></table></figure>
+<p>如果现在的需求是求每天的次日留存率，注意需要计算所有用户，那就是要筛选出每天登录的人，再计算这些人中第二天还登录的有多少人。这里可以通过前后函数来简单实现</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> uid, dt, <span class="built_in">lead</span>(dt, <span class="number">1</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid <span class="keyword">order</span> <span class="keyword">by</span> dt) <span class="keyword">as</span> dt2</span><br><span class="line"><span class="keyword">from</span> user_log</span><br></pre></td></tr></table></figure>
+<p>首先用<code>lead()</code>函数，根据用户id分组，登录日期排序，由于数据经过去重，故这可以得到每次登录记录的下一次登录日期。输出如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">uid</th>
+<th style="text-align:center">dt</th>
+<th style="text-align:center">dt2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-10</td>
+<td style="text-align:center">2021-07-11</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-11</td>
+<td style="text-align:center">2021-07-12</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-12</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-11</td>
+<td style="text-align:center">2021-07-12</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-12</td>
+<td style="text-align:center">2021-07-14</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-14</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td style="text-align:center">103</td>
+<td style="text-align:center">2021-07-11</td>
+<td style="text-align:center">2021-07-13</td>
+</tr>
+<tr>
+<td style="text-align:center">103</td>
+<td style="text-align:center">2021-07-13</td>
+<td style="text-align:center">2021-07-14</td>
+</tr>
+<tr>
+<td style="text-align:center">103</td>
+<td style="text-align:center">2021-07-14</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td style="text-align:center">104</td>
+<td style="text-align:center">2021-07-12</td>
+<td style="text-align:center">2021-07-13</td>
+</tr>
+<tr>
+<td style="text-align:center">104</td>
+<td style="text-align:center">2021-07-13</td>
+<td style="text-align:center">2021-07-15</td>
+</tr>
+<tr>
+<td style="text-align:center">104</td>
+<td style="text-align:center">2021-07-15</td>
+<td style="text-align:center">null</td>
+</tr>
+</tbody>
+</table>
+<p>我们要判断是否次日登录，只需要判断<code>dt</code>加一天是否等于<code>dt2</code>。完整代码如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> ul <span class="keyword">as</span> (</span><br><span class="line">    <span class="keyword">select</span> uid, dt, <span class="built_in">lead</span>(dt, <span class="number">1</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid <span class="keyword">order</span> <span class="keyword">by</span> dt) <span class="keyword">as</span> dt2</span><br><span class="line">    <span class="keyword">from</span> user_log</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> dt, <span class="built_in">sum</span>(if(dt2 <span class="operator">=</span> date_add(dt, <span class="type">interval</span> <span class="number">1</span> <span class="keyword">day</span>), <span class="number">1</span>, <span class="number">0</span>))<span class="operator">/</span><span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">as</span> left_rate</span><br><span class="line"><span class="keyword">from</span> ul</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> dt;</span><br></pre></td></tr></table></figure>
+<h4 id="实例"><a class="markdownIt-Anchor" href="#实例"></a> 实例</h4>
+<p>最后我们来看一个比较现实的例子，用户行为日志表<code>tb_user_log</code>（uid-用户ID, artical_id-文章ID, in_time-进入时间, out_time-离开时间, sign_in-是否签到）。计算2021年11月每天新用户的次日留存率，结果按日期升序（如果<strong>in_time-进入时间</strong>和<strong>out_time-离开时间</strong>跨天了，在两天里都记为该用户活跃过），数据如下</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>uid</th>
+<th>artical_id</th>
+<th>in_time</th>
+<th>out_time</th>
+<th>sign_cin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>101</td>
+<td>0</td>
+<td>2021-11-01 10:00:00</td>
+<td>2021-11-01 10:00:42</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>102</td>
+<td>9001</td>
+<td>2021-11-01 10:00:00</td>
+<td>2021-11-01 10:00:09</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>103</td>
+<td>9001</td>
+<td>2021-11-01 10:00:01</td>
+<td>2021-11-01 10:01:50</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>101</td>
+<td>9002</td>
+<td>2021-11-02 10:00:09</td>
+<td>2021-11-02 10:00:28</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>103</td>
+<td>9002</td>
+<td>2021-11-02 10:00:51</td>
+<td>2021-11-02 10:00:59</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>104</td>
+<td>9001</td>
+<td>2021-11-02 11:00:28</td>
+<td>2021-11-02 11:01:24</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>101</td>
+<td>9003</td>
+<td>2021-11-03 11:00:55</td>
+<td>2021-11-03 11:01:24</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>104</td>
+<td>9003</td>
+<td>2021-11-03 11:00:45</td>
+<td>2021-11-03 11:00:55</td>
+<td>0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>105</td>
+<td>9003</td>
+<td>2021-11-03 11:00:53</td>
+<td>2021-11-03 11:00:59</td>
+<td>0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>101</td>
+<td>9002</td>
+<td>2021-11-04 11:00:55</td>
+<td>2021-11-04 11:00:59</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>首先，我们要将数据往上述的示例数据那边靠，根据题意，进入时间与离开时间都算活跃，那就把这两列合并，变成一个uid与活跃时间的表，代码如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> uid, <span class="type">date</span>(in_time) <span class="keyword">as</span> dt</span><br><span class="line"><span class="keyword">from</span> tb_user_log</span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> uid, <span class="type">date</span>(out_time) <span class="keyword">as</span> dt</span><br><span class="line"><span class="keyword">from</span> tb_user_log</span><br></pre></td></tr></table></figure>
+<p>用<code>date()</code>提取出我们关注的日期，用<code>union</code>做去重。</p>
+<p>然后，就是求第一次登录时间，同样的使用窗口函数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tul <span class="keyword">as</span> (</span><br><span class="line">    <span class="keyword">select</span> uid, <span class="type">date</span>(in_time) <span class="keyword">as</span> dt</span><br><span class="line">    <span class="keyword">from</span> tb_user_log</span><br><span class="line">    <span class="keyword">union</span></span><br><span class="line">    <span class="keyword">select</span> uid, <span class="type">date</span>(out_time) <span class="keyword">as</span> dt</span><br><span class="line">    <span class="keyword">from</span> tb_user_log</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span>, <span class="built_in">min</span>(dt) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid) <span class="keyword">as</span> f_dt</span><br><span class="line"><span class="keyword">from</span> tul</span><br></pre></td></tr></table></figure>
+<p>最后计算次日留存率</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tul <span class="keyword">as</span> (</span><br><span class="line">    <span class="keyword">select</span> uid, <span class="type">date</span>(in_time) <span class="keyword">as</span> dt</span><br><span class="line">    <span class="keyword">from</span> tb_user_log</span><br><span class="line">    <span class="keyword">union</span></span><br><span class="line">    <span class="keyword">select</span> uid, <span class="type">date</span>(out_time) <span class="keyword">as</span> dt</span><br><span class="line">    <span class="keyword">from</span> tb_user_log</span><br><span class="line">),</span><br><span class="line">ut <span class="keyword">as</span> (</span><br><span class="line">    <span class="keyword">select</span> <span class="operator">*</span>, <span class="built_in">min</span>(dt) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid) <span class="keyword">as</span> f_dt</span><br><span class="line">    <span class="keyword">from</span> tul</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> f_dt <span class="keyword">as</span> dt, round(<span class="built_in">sum</span>(if(dt <span class="operator">=</span> date_add(f_dt, <span class="type">interval</span> <span class="number">1</span> <span class="keyword">day</span>), <span class="number">1</span>, <span class="number">0</span>))<span class="operator">/</span><span class="built_in">count</span>(<span class="keyword">distinct</span> uid), <span class="number">2</span>) <span class="keyword">as</span> uv_left_rate</span><br><span class="line"><span class="keyword">from</span> ut</span><br><span class="line"><span class="keyword">where</span> date_format(f_dt, &quot;%Y%m&quot;) <span class="operator">=</span> <span class="number">202111</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> f_dt</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> dt;</span><br></pre></td></tr></table></figure>
+<p>注意，2021年11月这个限定条件要在最后进行限定，如果在表<code>ut</code>中提前限定的话，会导致错判部分用户的首次登录日期。</p>
+<h3 id="连续签到天数"><a class="markdownIt-Anchor" href="#连续签到天数"></a> 连续签到天数</h3>
+<p>在实际场景中，经常会有计算连续签到天数的需求，其难点在于如何判断日期的连续。示例表<code>user_log</code>，数据如下（uid为用户id，dt为登录日期）：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">uid</th>
+<th style="text-align:center">dt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-10</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-10</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-11</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-12</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-13</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-13</td>
+</tr>
+</tbody>
+</table>
+<p>这里用的是最方便的数据，实际情况下数据会比较复杂，需要计算连续签到时，可以将数据处理成类似于上述数据的结构，例如用<code>date()</code>函数提取时间的日期部分，有多个时间列的情况下，用<code>union</code>将所有时间列合并为一个等。</p>
+<p>现在我们来看看判断连续签到的具体思路，一般的思路是，先对时间进行排序，再使用时间与排序相减，只要时间是连续的，那么时间与排序相减的值就是不变的，代码为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">	<span class="operator">*</span>, </span><br><span class="line">	<span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid <span class="keyword">order</span> <span class="keyword">by</span> dt) <span class="keyword">as</span> r1, </span><br><span class="line">	date_format(dt, &quot;%Y%m%d&quot;) <span class="operator">-</span> <span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid <span class="keyword">order</span> <span class="keyword">by</span> dt) <span class="keyword">as</span> dt2</span><br><span class="line"><span class="keyword">from</span> user_log;</span><br></pre></td></tr></table></figure>
+<p>输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">uid</th>
+<th style="text-align:center">dt</th>
+<th style="text-align:center">r1</th>
+<th style="text-align:center">dt2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-10</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">20210709</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-11</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">20210709</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-13</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">20210710</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-10</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">20210709</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-12</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">20210710</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-13</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">20210710</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，只需要在上述表的基础上，根据<code>uid, dt2</code>进行分组，那就可以保证每一个分组中都是连续的日期，只需要根据这个分组进行排序，就可以计算得到连续签到的天数了，代码如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> r1 <span class="keyword">as</span> (</span><br><span class="line">    <span class="keyword">select</span> </span><br><span class="line">		<span class="operator">*</span>, </span><br><span class="line">		<span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid <span class="keyword">order</span> <span class="keyword">by</span> dt) <span class="keyword">as</span> r1, </span><br><span class="line">		date_format(dt, &quot;%Y%m%d&quot;) <span class="operator">-</span> <span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid <span class="keyword">order</span> <span class="keyword">by</span> dt) <span class="keyword">as</span> dt2</span><br><span class="line">	<span class="keyword">from</span> user_log</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span>, <span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> uid, dt2 <span class="keyword">order</span> <span class="keyword">by</span> dt) <span class="keyword">as</span> cnt_day</span><br><span class="line"><span class="keyword">from</span> r1;</span><br></pre></td></tr></table></figure>
+<p>输出为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">uid</th>
+<th style="text-align:center">dt</th>
+<th style="text-align:center">r1</th>
+<th style="text-align:center">dt2</th>
+<th style="text-align:center">cnt_day</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-10</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">20210709</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-11</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">20210709</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">2021-07-13</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">20210710</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-10</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">20210709</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-12</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">20210710</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">102</td>
+<td style="text-align:center">2021-07-13</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">20210710</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到<code>cnt_day</code>记录的就是当前时间下用户的连续签到天数。</p>
+<h2 id="补充-5"><a class="markdownIt-Anchor" href="#补充-5"></a> 补充</h2>
+<h3 id="数据类型转化"><a class="markdownIt-Anchor" href="#数据类型转化"></a> 数据类型转化</h3>
+<p>在实际情况中，有时候会出现数据类型与我们的要求不符导致bug的情况（比如两列相减，但是列的类型为无符号整数，相减结果有负数机会溢出报错），这时候就要用到数据类型转化。数据类型转化有两种方法，分别是<code>cast()</code>与<code>convert()</code>，其语法分别为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cast</span>(列名 <span class="keyword">as</span> 类型)</span><br><span class="line"><span class="keyword">convert</span>(列名, 类型)</span><br></pre></td></tr></table></figure>
+<p>类型可填参数如下</p>
+<blockquote>
+<p>二进制: binary</p>
+<p>字符型: char</p>
+<p>日期: date</p>
+<p>时间: time</p>
+<p>日期时间型: datetime</p>
+<p>浮点数: decimal</p>
+<p>整数: signed</p>
+<p>无符号整数: unsigned</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.hancanon.com">HanCanon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.hancanon.com/2024-2-1-SQL.html">https://blog.hancanon.com/2024-2-1-SQL.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.hancanon.com" target="_blank">HanCanonのBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SQL/">SQL</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div><div class="post_share"><div class="social-share" data-image="https://han-canon-picture.oss-accelerate.aliyuncs.com/折千.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024-1-20-ensemble_learning.html" title="集成学习简介"><img class="cover" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/千反田.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">集成学习简介</div></div></a></div><div class="next-post pull-right"><a href="/2024-2-14-Generalization.html" title="机器学习理论：泛化误差、方差与偏差"><img class="cover" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/虹夏头像.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">机器学习理论：泛化误差、方差与偏差</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text"> 基础结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#select"><span class="toc-number">2.1.</span> <span class="toc-text"> select</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#where"><span class="toc-number">2.2.</span> <span class="toc-text"> where</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#order-by"><span class="toc-number">2.3.</span> <span class="toc-text"> order by</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.4.</span> <span class="toc-text"> 示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-number">2.5.</span> <span class="toc-text"> 补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#distinct%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">2.5.1.</span> <span class="toc-text"> distinct关键字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E7%B3%8A%E5%8C%B9%E9%85%8D"><span class="toc-number">2.5.2.</span> <span class="toc-text"> 模糊匹配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#limlt"><span class="toc-number">2.5.3.</span> <span class="toc-text"> limlt</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E9%9B%86%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text"> 聚集函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#group-by"><span class="toc-number">3.1.</span> <span class="toc-text"> group by</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85-2"><span class="toc-number">3.2.</span> <span class="toc-text"> 补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#count%E4%B8%8Enull"><span class="toc-number">3.2.1.</span> <span class="toc-text"> count()与null</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#count%E4%B8%8Edistinct"><span class="toc-number">3.2.2.</span> <span class="toc-text"> count()与distinct</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#concat%E5%AE%B6%E6%97%8F"><span class="toc-number">3.2.3.</span> <span class="toc-text"> concat()家族</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E8%A1%A8"><span class="toc-number">4.</span> <span class="toc-text"> 连接表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#inner-join"><span class="toc-number">4.1.</span> <span class="toc-text"> inner join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#leftright-join"><span class="toc-number">4.2.</span> <span class="toc-text"> left&#x2F;right join</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85-3"><span class="toc-number">4.3.</span> <span class="toc-text"> 补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA%E8%BF%9E%E6%8E%A5%E9%94%AE"><span class="toc-number">4.3.1.</span> <span class="toc-text"> 多个连接键</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.</span> <span class="toc-text"> 组合查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">6.</span> <span class="toc-text"> 子查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E5%87%BD%E6%95%B0"><span class="toc-number">7.</span> <span class="toc-text"> 条件判断函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#case-when"><span class="toc-number">7.1.</span> <span class="toc-text"> case when</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if"><span class="toc-number">7.2.</span> <span class="toc-text"> if</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ifnull"><span class="toc-number">7.3.</span> <span class="toc-text"> ifnull</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text"> 窗口函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0"><span class="toc-number">8.1.</span> <span class="toc-text"> 聚合函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E5%87%BD%E6%95%B0"><span class="toc-number">8.2.</span> <span class="toc-text"> 排序函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">8.2.1.</span> <span class="toc-text"> 语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">8.2.2.</span> <span class="toc-text"> 排序函数的区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85-4"><span class="toc-number">8.3.</span> <span class="toc-text"> 补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8E%92%E5%BA%8F%E5%87%BD%E6%95%B0%E6%B1%82%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="toc-number">8.3.1.</span> <span class="toc-text"> 使用排序函数求中位数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E5%87%BD%E6%95%B0"><span class="toc-number">8.4.</span> <span class="toc-text"> 前后函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6"><span class="toc-number">8.5.</span> <span class="toc-text"> 框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#rows%E6%A8%A1%E5%BC%8F"><span class="toc-number">8.5.1.</span> <span class="toc-text"> rows模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#range%E6%A8%A1%E5%BC%8F"><span class="toc-number">8.5.2.</span> <span class="toc-text"> range模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%95%B0%E6%8D%AE%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text"> 时间数据相关函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#date_format"><span class="toc-number">9.1.</span> <span class="toc-text"> date_format()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#date"><span class="toc-number">9.2.</span> <span class="toc-text"> date()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timestampdiff"><span class="toc-number">9.3.</span> <span class="toc-text"> timestampdiff()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#datediff"><span class="toc-number">9.4.</span> <span class="toc-text"> datediff()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timestampdiff%E4%B8%8Edatediff%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">9.5.</span> <span class="toc-text"> timestampdiff()与datediff()的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#date_add%E4%B8%8Edate_sub"><span class="toc-number">9.6.</span> <span class="toc-text"> date_add()与date_sub()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8C%87%E6%A0%87%E4%B8%8E%E5%9C%BA%E6%99%AF"><span class="toc-number">10.</span> <span class="toc-text"> 常用指标与场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%95%99%E5%AD%98%E7%8E%87"><span class="toc-number">10.1.</span> <span class="toc-text"> 留存率</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AC%A1%E6%97%A5%E7%95%99%E5%AD%98%E7%8E%87"><span class="toc-number">10.1.1.</span> <span class="toc-text"> 次日留存率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">10.1.2.</span> <span class="toc-text"> 实例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E7%BB%AD%E7%AD%BE%E5%88%B0%E5%A4%A9%E6%95%B0"><span class="toc-number">10.2.</span> <span class="toc-text"> 连续签到天数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85-5"><span class="toc-number">11.</span> <span class="toc-text"> 补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96"><span class="toc-number">11.1.</span> <span class="toc-text"> 数据类型转化</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By HanCanon</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async src="//at.alicdn.com/t/c/font_4610099_r8r52ok711k.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024-3-11-HypothesisTesting-1.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/风景6.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-11</span><a class="blog-slider__title" href="2024-3-11-HypothesisTesting-1.html" alt="">假设检验（一）：参数检验</a><div class="blog-slider__text">介绍假设检验的思想与常见的检验方法</div><a class="blog-slider__button" href="2024-3-11-HypothesisTesting-1.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023-12-15-DecisionTree-1.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/冰菓社刊.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-12-15</span><a class="blog-slider__title" href="2023-12-15-DecisionTree-1.html" alt="">决策树（上）：ID3算法与C4.5算法</a><div class="blog-slider__text">介绍决策树中的ID3算法与C4.5算法</div><a class="blog-slider__button" href="2023-12-15-DecisionTree-1.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023-12-19-DecisionTree-2.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/冰菓社刊.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-12-19</span><a class="blog-slider__title" href="2023-12-19-DecisionTree-2.html" alt="">决策树（下）：CART算法及其代码实现</a><div class="blog-slider__text">介绍主流的CART决策树算法及其sklearn代码实现</div><a class="blog-slider__button" href="2023-12-19-DecisionTree-2.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024-2-14-Generalization.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/虹夏头像.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-14</span><a class="blog-slider__title" href="2024-2-14-Generalization.html" alt="">机器学习理论：泛化误差、方差与偏差</a><div class="blog-slider__text">给出方差-偏差分解公式的详细推导并浅谈对实际建模的指导作用</div><a class="blog-slider__button" href="2024-2-14-Generalization.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023-3-3-RandomForest.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/人2.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" href="2023-3-3-RandomForest.html" alt="">随机森林原理与代码实现</a><div class="blog-slider__text">介绍随机森林算法的原理及其sklearn代码实现</div><a class="blog-slider__button" href="2023-3-3-RandomForest.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024-3-23-GBDT.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/风景1.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-23</span><a class="blog-slider__title" href="2024-3-23-GBDT.html" alt="">GBDT算法原理及其代码实现</a><div class="blog-slider__text">介绍GBDT算法的原理及其sklearn代码实现</div><a class="blog-slider__button" href="2024-3-23-GBDT.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024-3-16-ABTest.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/风景7.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-16</span><a class="blog-slider__title" href="2024-3-16-ABTest.html" alt="">A/B测试简介</a><div class="blog-slider__text">介绍A/B测试的流程与理论基础</div><a class="blog-slider__button" href="2024-3-16-ABTest.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024-3-15-MinimalSample.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/风景7.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-15</span><a class="blog-slider__title" href="2024-3-15-MinimalSample.html" alt="">A/B测试中最小样本量计算公式的推导</a><div class="blog-slider__text">介绍A/B测试中最小样本量公式的推导</div><a class="blog-slider__button" href="2024-3-15-MinimalSample.html" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><!-- hexo injector body_end end --></body></html>
