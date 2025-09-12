@@ -1,0 +1,289 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>7-Zip如何使用zstd压缩算法 | HanCanonのBlog</title><meta name="author" content="HanCanon"><meta name="copyright" content="HanCanon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="分享7-Zip如何实用zstd算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7-Zip如何使用zstd压缩算法">
+<meta property="og:url" content="https://blog.hancanon.com/2025-9-13-7z_zstd.html">
+<meta property="og:site_name" content="HanCanonのBlog">
+<meta property="og:description" content="分享7-Zip如何实用zstd算法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://han-canon-picture.oss-accelerate.aliyuncs.com/%E9%A3%8E%E6%99%AF2.webp">
+<meta property="article:published_time" content="2025-09-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-12T16:00:00.000Z">
+<meta property="article:author" content="HanCanon">
+<meta property="article:tag" content="7-Zip">
+<meta property="article:tag" content="软件">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://han-canon-picture.oss-accelerate.aliyuncs.com/%E9%A3%8E%E6%99%AF2.webp"><link rel="shortcut icon" href="https://han-canon-picture.oss-accelerate.aliyuncs.com/抹茶芭菲.webp"><link rel="canonical" href="https://blog.hancanon.com/2025-9-13-7z_zstd.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="vXoUBFQ43k60e5hZnfx98hISuS4V1jfxK5WtyFyXF44"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '7-Zip如何使用zstd压缩算法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-09-13 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/%E8%99%B9%E5%A4%8F%E5%A4%B4%E5%83%8F.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">32</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-SmartHome"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-SmartHome"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon--shijian"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon--shijian"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw icon-yanshoubiaoqianguanli"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-yanshoubiaoqianguanli"></use></svg><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-wenjianjia"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wenjianjia"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw icon-link"></i><svg class="icon fas fa-tada" aria-hidden="true"><use xlink:href="#icon-link"></use></svg><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://han-canon-picture.oss-accelerate.aliyuncs.com/风景2.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="HanCanonのBlog"><span class="site-name">HanCanonのBlog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><svg class="faa-tada icon" style="height:24px;width:24px;fill:currentColor;position:relative;top:2px" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw icon-SmartHome"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-SmartHome"></use></svg><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw icon--shijian"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon--shijian"></use></svg><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/tags/"><i class="fa-fw icon-yanshoubiaoqianguanli"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-yanshoubiaoqianguanli"></use></svg><span> 标签</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw icon-wenjianjia"></i><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-wenjianjia"></use></svg><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw icon-link"></i><svg class="icon fas fa-tada" aria-hidden="true"><use xlink:href="#icon-link"></use></svg><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">7-Zip如何使用zstd压缩算法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-12T16:00:00.000Z" title="发表于 2025-09-13 00:00:00">2025-09-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-12T16:00:00.000Z" title="更新于 2025-09-13 00:00:00">2025-09-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="7-Zip如何使用zstd压缩算法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+<p>最近，笔者在用<code>7-Zip</code>解压文件的时候遇到了不支持压缩算法的报错，一番了解之后，发现需要解压的文件使用了<code>zstd</code>算法进行压缩，而<code>7-Zip</code>不支持该压缩算法，在此简单写一篇博客记录一下。</p>
+<h1 id="7-zip使用zstd压缩算法"><a class="markdownIt-Anchor" href="#7-zip使用zstd压缩算法"></a> 7-Zip使用zstd压缩算法</h1>
+<p>笔者在万能的<code>github</code>上找到了一个<code>7-Zip</code>的分支项目<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/mcmilk/7-Zip-zstd">7-Zip-zstd</a>，这个项目在<code>7-Zip</code>的基础上加入了对<code>zstd</code>以及多种其他算法的支持，还提供了作为软件安装，以及作为<code>7-Zip</code>插件安装的方式，这里我简单介绍一下如何作为<code>7-Zip</code>插件安装。</p>
+<p>首先，前往<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/mcmilk/7-Zip-zstd/releases">7-Zip ZS Releases</a>，根据自己的操作系统下载名为<code>Codecs</code>的压缩文件，并解压，然后，找到<code>7-Zip</code>的安装位置，<code>windows</code>系统的默认安装位置为<code>C:\Program Files\7-Zip</code>，在该文件夹中创建<code>Codecs</code>文件夹，注意大小写，最后将解压出的所有文件放入该文件夹中。可以通过命令<code>7z.exe i</code>来判断是否安装成功，该命令输出应为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">7-Zip 21.03 (x64) : Copyright (c) 1999-2021 Igor Pavlov : 2021-05-06</span><br><span class="line"></span><br><span class="line">Libs:</span><br><span class="line"> 0  C:\Program Files\7-Zip\7z.dll</span><br><span class="line"></span><br><span class="line">Libs:</span><br><span class="line"> 0  c:\Program Files\7-Zip\7z.dll</span><br><span class="line"> 1  c:\Program Files\7-Zip\Codecs\brotli-x64.dll</span><br><span class="line"> 2  c:\Program Files\7-Zip\Codecs\flzma2-x64.dll</span><br><span class="line"> 3  c:\Program Files\7-Zip\Codecs\lizard-x64.dll</span><br><span class="line"> 4  c:\Program Files\7-Zip\Codecs\lz4-x64.dll</span><br><span class="line"> 5  c:\Program Files\7-Zip\Codecs\lz5-x64.dll</span><br><span class="line"> 6  c:\Program Files\7-Zip\Codecs\zstd-x64.dll</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">Codecs:</span><br><span class="line"> 0 4ED  303011B BCJ2</span><br><span class="line"> 0  ED  3030103 BCJ</span><br><span class="line"> 0  ED  3030205 PPC</span><br><span class="line"> 0  ED  3030401 IA64</span><br><span class="line"> 0  ED  3030501 ARM</span><br><span class="line"> 0  ED  3030701 ARMT</span><br><span class="line"> 0  ED  3030805 SPARC</span><br><span class="line"> 0  ED    20302 Swap2</span><br><span class="line"> 0  ED    20304 Swap4</span><br><span class="line"> 0  ED    40202 BZip2</span><br><span class="line"> 0  ED        0 Copy</span><br><span class="line"> 0  ED    40109 Deflate64</span><br><span class="line"> 0  ED    40108 Deflate</span><br><span class="line"> 0  ED        3 Delta</span><br><span class="line"> 0  ED       21 LZMA2</span><br><span class="line"> 0  ED    30101 LZMA</span><br><span class="line"> 0  ED    30401 PPMD</span><br><span class="line"> 0   D    40301 Rar1</span><br><span class="line"> 0   D    40302 Rar2</span><br><span class="line"> 0   D    40303 Rar3</span><br><span class="line"> 0   D    40305 Rar5</span><br><span class="line"> 0  ED  6F10701 7zAES</span><br><span class="line"> 0  ED  6F00181 AES256CBC</span><br><span class="line"> 1  ED  4F71102 BROTLI</span><br><span class="line"> 2  ED       21 FLZMA2</span><br><span class="line"> 3  ED  4F71106 LIZARD</span><br><span class="line"> 4  ED  4F71104 LZ4</span><br><span class="line"> 5  ED  4F71105 LZ5</span><br><span class="line"> 6  ED  4F71101 ZSTD</span><br></pre></td></tr></table></figure>
+<h2 id="常用压缩算法"><a class="markdownIt-Anchor" href="#常用压缩算法"></a> 常用压缩算法</h2>
+<p>趁此机会，我也简单了解了目前常用的压缩算法与其优缺点。评价一个压缩算法有两个指标，分别是压缩比以及速度，包括压缩速度以及解压速度，而<code>zstd</code>算法在这两个个方面都有着非常好的表现，属于每一项都不是最好，但是都是高分，因此<code>zstd</code>也正在逐渐成为主流的压缩算法。</p>
+<p>那么，在这两个方面表现最好的压缩算法是什么呢，目前压缩比最好的压缩算法是<code>LZMA</code>算法，这也是<code>7-Zip</code>的看家算法，而在速度上表现最好的是<code>LZ4/LZ5</code>算法，当然，这都是有代价的，高压缩比的<code>LZMA</code>算法的速度非常的慢，反之，<code>LZ4/LZ5</code>算法的压缩比非常的低，因此这两种算法都属于非常偏科的算法，只适用于少数特定场景。</p>
+<p>至于其他的压缩算法，在此就不过多介绍了，从实用性的角度来讲，这三种压缩算法就可以满足绝大多数的需求了，下面放上三种算法的对比</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">算法</th>
+<th style="text-align:center">压缩比</th>
+<th style="text-align:center">速度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Zstd</strong></td>
+<td style="text-align:center"><strong>中到高</strong></td>
+<td style="text-align:center"><strong>快</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>LZ4</strong></td>
+<td style="text-align:center">较低</td>
+<td style="text-align:center"><strong>极快</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>LZMA (XZ)</strong></td>
+<td style="text-align:center"><strong>极高</strong></td>
+<td style="text-align:center"><strong>极慢</strong></td>
+</tr>
+</tbody>
+</table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://blog.hancanon.com">HanCanon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.hancanon.com/2025-9-13-7z_zstd.html">https://blog.hancanon.com/2025-9-13-7z_zstd.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.hancanon.com" target="_blank">HanCanonのBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/7-Zip/">7-Zip</a><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6/">软件</a></div><div class="post_share"><div class="social-share" data-image="https://han-canon-picture.oss-accelerate.aliyuncs.com/风景2.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://lib.baomitu.com/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://lib.baomitu.com/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025-9-2-firefoxconfig.html" title="Firefox自定义技巧分享"><img class="cover" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/风景7.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Firefox自定义技巧分享</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025-9-2-firefoxconfig.html" title="Firefox自定义技巧分享"><img class="cover" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/风景7.webp" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-02</div><div class="title">Firefox自定义技巧分享</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-zip%E4%BD%BF%E7%94%A8zstd%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text"> 7-Zip使用zstd压缩算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text"> 常用压缩算法</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By HanCanon</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async src="//at.alicdn.com/t/c/font_4610099_r8r52ok711k.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024-3-11-HypothesisTesting-1.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/风景6.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-11</span><a class="blog-slider__title" href="2024-3-11-HypothesisTesting-1.html" alt="">假设检验（一）：参数检验</a><div class="blog-slider__text">介绍假设检验的思想与常见的检验方法</div><a class="blog-slider__button" href="2024-3-11-HypothesisTesting-1.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023-12-15-DecisionTree-1.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/冰菓社刊.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-12-15</span><a class="blog-slider__title" href="2023-12-15-DecisionTree-1.html" alt="">决策树（上）：ID3算法与C4.5算法</a><div class="blog-slider__text">介绍决策树中的ID3算法与C4.5算法</div><a class="blog-slider__button" href="2023-12-15-DecisionTree-1.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023-12-19-DecisionTree-2.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/冰菓社刊.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-12-19</span><a class="blog-slider__title" href="2023-12-19-DecisionTree-2.html" alt="">决策树（下）：CART算法及其代码实现</a><div class="blog-slider__text">介绍主流的CART决策树算法及其sklearn代码实现</div><a class="blog-slider__button" href="2023-12-19-DecisionTree-2.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024-2-14-Generalization.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/虹夏头像.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-02-14</span><a class="blog-slider__title" href="2024-2-14-Generalization.html" alt="">机器学习理论：泛化误差、方差与偏差</a><div class="blog-slider__text">给出方差-偏差分解公式的详细推导并浅谈对实际建模的指导作用</div><a class="blog-slider__button" href="2024-2-14-Generalization.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023-3-3-RandomForest.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/人2.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-03</span><a class="blog-slider__title" href="2023-3-3-RandomForest.html" alt="">随机森林原理与代码实现</a><div class="blog-slider__text">介绍随机森林算法的原理及其sklearn代码实现</div><a class="blog-slider__button" href="2023-3-3-RandomForest.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024-3-23-GBDT.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/风景1.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-23</span><a class="blog-slider__title" href="2024-3-23-GBDT.html" alt="">GBDT算法原理及其代码实现</a><div class="blog-slider__text">介绍GBDT算法的原理及其sklearn代码实现</div><a class="blog-slider__button" href="2024-3-23-GBDT.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024-3-16-ABTest.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/风景7.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-16</span><a class="blog-slider__title" href="2024-3-16-ABTest.html" alt="">A/B测试简介</a><div class="blog-slider__text">介绍A/B测试的流程与理论基础</div><a class="blog-slider__button" href="2024-3-16-ABTest.html" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2024-3-15-MinimalSample.html" alt=""><img width="48" height="48" src="https://han-canon-picture.oss-accelerate.aliyuncs.com/风景7.webp" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2024-03-15</span><a class="blog-slider__title" href="2024-3-15-MinimalSample.html" alt="">A/B测试中最小样本量计算公式的推导</a><div class="blog-slider__text">介绍A/B测试中最小样本量公式的推导</div><a class="blog-slider__button" href="2024-3-15-MinimalSample.html" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
