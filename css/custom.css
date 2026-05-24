@@ -146,6 +146,14 @@ svg.icon {
   overflow: hidden;
 }
 
+@font-face {
+  font-family: "iconfont";
+  src: url("/font/iconfont-4610099.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
 #nav [class^="icon-"],
 #nav [class*=" icon-"],
 #sidebar-menus [class^="icon-"],
@@ -154,6 +162,26 @@ svg.icon {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-link:before {
+  content: "\e60e";
+}
+
+.icon-SmartHome:before {
+  content: "\e74a";
+}
+
+.icon--shijian:before {
+  content: "\e624";
+}
+
+.icon-yanshoubiaoqianguanli:before {
+  content: "\e613";
+}
+
+.icon-wenjianjia:before {
+  content: "\e606";
 }
 
 @font-face {
