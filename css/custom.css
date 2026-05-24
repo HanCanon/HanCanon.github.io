@@ -146,6 +146,16 @@ svg.icon {
   overflow: hidden;
 }
 
+#nav [class^="icon-"],
+#nav [class*=" icon-"],
+#sidebar-menus [class^="icon-"],
+#sidebar-menus [class*=" icon-"] {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @font-face {
   /* 为载入的字体取名字(随意) */
   font-family: 'KAI';	
