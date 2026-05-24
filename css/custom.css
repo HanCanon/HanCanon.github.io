@@ -60,6 +60,20 @@
   border: var(--border-style);
 }
 
+#swiper_container,
+#swiper_container .swiper-wrapper,
+#swiper_container .swiper-slide {
+  width: 100% !important;
+}
+
+#swiper_container {
+  overflow: hidden;
+}
+
+#swiper_container .blog-slider__item {
+  min-width: 100%;
+}
+
 /* 首页侧栏卡片 */
 #aside-content .card-widget {
   background: var(--trans-light);
