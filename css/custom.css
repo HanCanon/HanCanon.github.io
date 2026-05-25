@@ -226,10 +226,24 @@ svg.icon {
 #sidebar-menus [class^="icon-"],
 #sidebar-menus [class*=" icon-"] {
   display: inline-block;
+  width: 1.35em;
+  font-family: "iconfont" !important;
+  font-style: normal;
+  font-size: 1.28em;
+  line-height: 1;
+  text-align: center;
+  vertical-align: -0.12em;
+  transform-origin: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#search-button .fa-search {
+  display: inline-block;
   width: 1.25em;
   font-family: "iconfont" !important;
   font-style: normal;
-  font-size: 1em;
+  font-size: 1.18em;
   line-height: 1;
   text-align: center;
   vertical-align: -0.08em;
@@ -244,6 +258,11 @@ svg.icon {
 
 .icon-SmartHome:before {
   content: "\e74a";
+}
+
+.icon-sousuo:before,
+#search-button .fa-search:before {
+  content: "\e60c";
 }
 
 .icon--shijian:before {
