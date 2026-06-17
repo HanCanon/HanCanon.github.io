@@ -31,10 +31,33 @@
     });
   }
 
+  function toRootPath(path) {
+    if (!path || /^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(path)) return path;
+    if (path.charAt(0) === '/') return path;
+    return '/' + path.replace(/^\.?\//, '');
+  }
+
+  function normalizeArticleLinks(container) {
+    container.querySelectorAll('.blog-slider__img, .blog-slider__title, .blog-slider__button').forEach(function (link) {
+      var href = link.getAttribute('href');
+      var onclick = link.getAttribute('onclick');
+
+      if (href) link.setAttribute('href', toRootPath(href));
+
+      if (onclick) {
+        link.setAttribute('onclick', onclick.replace(/pjax\.loadUrl\((['"])(?!\/|[a-z][a-z0-9+.-]*:|\/\/|#)([^'"]+)\1\)/ig, function (_, quote, path) {
+          return 'pjax.loadUrl(' + quote + toRootPath(path) + quote + ')';
+        }));
+      }
+    });
+  }
+
   function initButterflySwiper() {
     var container = document.getElementById('swiper_container');
 
     if (!container || typeof Swiper === 'undefined') return;
+
+    normalizeArticleLinks(container);
 
     var existingSwiper = getSwiper(container);
     if (existingSwiper && !existingSwiper.destroyed) {
