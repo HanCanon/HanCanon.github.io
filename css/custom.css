@@ -257,6 +257,16 @@ svg.icon {
   animation: tada 2s linear infinite;
 }
 
+#rightside_config .fa-cog {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform .3s ease;
+}
+
+#rightside_config.show .fa-cog {
+  transform: rotate(60deg);
+}
+
 .icon-SmartHome:before {
   content: "\e74a";
 }
