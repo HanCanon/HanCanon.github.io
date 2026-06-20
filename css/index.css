@@ -1398,7 +1398,7 @@ body {
   background: var(--global-bg);
   color: var(--font-color);
   font-size: var(--global-font-size);
-  font-family: KAI, -apple-system, 'Quicksand', 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;;
+  font-family: KAI, 'KAI Full', -apple-system, 'Quicksand', 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;;
   line-height: 2;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -1505,7 +1505,7 @@ a:hover {
 .site-name,
 #aside-content .author-info__name,
 #aside-content .author-info__description {
-  font-family: KAI, -apple-system, BlinkMacSystemFont, "Segoe UI" , "Helvetica Neue" , Lato, Roboto, "PingFang SC" , "Microsoft JhengHei" , "Microsoft YaHei" , sans-serif;
+  font-family: KAI, 'KAI Full', -apple-system, BlinkMacSystemFont, "Segoe UI" , "Helvetica Neue" , Lato, Roboto, "PingFang SC" , "Microsoft JhengHei" , "Microsoft YaHei" , sans-serif;
 }
 .is-center {
   text-align: center;
@@ -1673,7 +1673,7 @@ figure.highlight pre .javascript .function {
 #article-container pre,
 #article-container code {
   font-size: 14px;
-  font-family: Consolas, KAI !important;
+  font-family: Consolas, KAI, 'KAI Full' !important;
 }
 #article-container code {
   padding: 2px 4px;
