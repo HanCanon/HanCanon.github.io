@@ -311,3 +311,8 @@ svg.icon {
 #nav *::after{
   background-color: transparent!important;
 }
+
+/* Hide Butterfly's default copyright icon in post copyright blocks. */
+#post .post-copyright::before {
+  display: none;
+}
