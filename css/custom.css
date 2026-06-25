@@ -300,14 +300,6 @@ svg.icon {
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'KAI Full';
-  src: url('/font/霞鹜文楷.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 #nav *::after{
   background-color: transparent!important;
 }
