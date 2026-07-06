@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.hancanon.com/link/index.html</loc>
+    <loc>https://blog.hancanon.com/tags/index.html</loc>
     
     <lastmod>2026-05-24</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://blog.hancanon.com/tags/index.html</loc>
+    <loc>https://blog.hancanon.com/link/index.html</loc>
     
     <lastmod>2026-05-24</lastmod>
     
@@ -373,6 +373,13 @@
   </url>
   
   <url>
+    <loc>https://blog.hancanon.com/tags/%E7%90%86%E8%AE%BA/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.hancanon.com/tags/SQL/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -395,13 +402,6 @@
   
   <url>
     <loc>https://blog.hancanon.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.hancanon.com/tags/%E7%90%86%E8%AE%BA/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -471,13 +471,6 @@
   </url>
   
   <url>
-    <loc>https://blog.hancanon.com/tags/Pytorch/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.hancanon.com/tags/Debug/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -486,6 +479,13 @@
   
   <url>
     <loc>https://blog.hancanon.com/tags/Windows10/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.hancanon.com/tags/Pytorch/</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
