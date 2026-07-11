@@ -1522,10 +1522,10 @@ img:not([src]) {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
 }
-img[data-lazy-src]:not(.loaded) {
+img[loading='lazy'].lazyload-pending {
   filter: blur(8px) brightness(1);
 }
-img[data-lazy-src].error {
+img[loading='lazy'].error {
   filter: none;
 }
 .img-alt {

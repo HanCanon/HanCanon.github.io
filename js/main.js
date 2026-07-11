@@ -757,9 +757,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const lazyloadImg = () => {
     window.lazyLoadInstance = new LazyLoad({
-      elements_selector: 'img',
-      threshold: 0,
-      data_src: 'lazy-src'
+      elements_selector: 'img[loading="lazy"]'
     })
   }
 
