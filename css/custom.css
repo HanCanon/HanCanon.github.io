@@ -202,3 +202,8 @@ svg.icon {
 #post .post-copyright::before {
   display: none;
 }
+
+/* Preserve intrinsic aspect ratios when local article images scale down. */
+#article-container img[src^="/img/content/"] {
+  height: auto;
+}
