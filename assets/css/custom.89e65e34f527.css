@@ -109,7 +109,7 @@ svg.icon {
 
 @font-face {
   font-family: "iconfont";
-  src: url("/font/iconfont-4610099.woff2") format("woff2");
+  src: url("/assets/font/iconfont-4610099.05470df50521.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -187,7 +187,7 @@ svg.icon {
 
 @font-face {
   font-family: 'KAI';	
-  src: url('/font/霞鹜文楷-subset.woff2') format('woff2');
+  src: url('/assets/font/霞鹜文楷-subset.b3194ee267f3.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

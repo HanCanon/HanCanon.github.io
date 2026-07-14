@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "algorithm": "sha256",
+  "hashLength": 12,
+  "assets": {
+    "/css/custom.css": {
+      "path": "/assets/css/custom.89e65e34f527.css",
+      "sha256": "89e65e34f527aa6c387624cd20f305bba706cd0611307ff124be64fbd86311d7",
+      "bytes": 4671
+    },
+    "/css/index.css": {
+      "path": "/assets/css/index.10617b4c7abf.css",
+      "sha256": "10617b4c7abf735eb11c7e37395e6ad541f612a1f5b3aca1931ea6c4bbb1e9d2",
+      "bytes": 144111
+    },
+    "/css/swiper.min.css": {
+      "path": "/assets/css/swiper.min.8087679cf0f7.css",
+      "sha256": "8087679cf0f77b05748eb972d20c09a2e3da68257510fefeac4eeea846a1f730",
+      "bytes": 19582
+    },
+    "/css/swiperstyle.css": {
+      "path": "/assets/css/swiperstyle.54e36491241b.css",
+      "sha256": "54e36491241b60767198c28281bacef99ce6758e3ba8d2cc32af5e1f8464a996",
+      "bytes": 10263
+    },
+    "/font/iconfont-4610099.woff2": {
+      "path": "/assets/font/iconfont-4610099.05470df50521.woff2",
+      "sha256": "05470df50521b4ccc5ddf8295ce6fcf4bd0794f317eced4ea833fa2f630ae7df",
+      "bytes": 16520
+    },
+    "/font/霞鹜文楷-subset.woff2": {
+      "path": "/assets/font/霞鹜文楷-subset.b3194ee267f3.woff2",
+      "sha256": "b3194ee267f386ca1d4479c02ce5647fbdb709a88f01146090eb41dfe9401fda",
+      "bytes": 337496
+    },
+    "/js/lazyload.iife.min.js": {
+      "path": "/assets/js/lazyload.iife.min.4c04056fd8bd.js",
+      "sha256": "4c04056fd8bd9370bc64b3a7ca6a5aa360fffbdd7652486f39bcd0cb01074148",
+      "bytes": 2434
+    },
+    "/js/main.js": {
+      "path": "/assets/js/main.796b35660505.js",
+      "sha256": "796b35660505df01e32c86b85db93651caefc5136607c532cf7e176149ee33c1",
+      "bytes": 27411
+    },
+    "/js/search/local-search.js": {
+      "path": "/assets/js/search/local-search.65f81c02be3d.js",
+      "sha256": "65f81c02be3da9880febd8a4cb38c5f81fe755b210d53cb92d4acff90ffce120",
+      "bytes": 12066
+    },
+    "/js/swiper.min.js": {
+      "path": "/assets/js/swiper.min.f2ce7eb089bb.js",
+      "sha256": "f2ce7eb089bba678231b3521fa0b5fd07bb67eb043256ec45306246df9acc64a",
+      "bytes": 118210
+    },
+    "/js/swiper_init.js": {
+      "path": "/assets/js/swiper_init.0459da8c8d8e.js",
+      "sha256": "0459da8c8d8e984fa448bf86575cfff51718a0969babecb2dd3afeda857cad2e",
+      "bytes": 10096
+    },
+    "/js/typed.umd.min.js": {
+      "path": "/assets/js/typed.umd.min.dbc4d727e1d6.js",
+      "sha256": "dbc4d727e1d6a24ccc19c45f94ae47aff0e58b4e8bb137dd4cc234b7463bd292",
+      "bytes": 9681
+    },
+    "/js/utils.js": {
+      "path": "/assets/js/utils.33df94a3c6aa.js",
+      "sha256": "33df94a3c6aa703362ab1851538beb6a64a03b0f958f3ca65d94970cd9323ebe",
+      "bytes": 8741
+    }
+  }
+}
