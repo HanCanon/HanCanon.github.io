@@ -20,9 +20,9 @@
       
         <tags>
             
-            <tag> 软件 </tag>
-            
             <tag> 7-Zip </tag>
+            
+            <tag> 软件 </tag>
             
         </tags>
       
@@ -47,11 +47,11 @@
       
         <tags>
             
+            <tag> 软件 </tag>
+            
             <tag> Firefox </tag>
             
             <tag> 浏览器 </tag>
-            
-            <tag> 软件 </tag>
             
         </tags>
       
@@ -192,9 +192,9 @@
             
             <tag> 数学 </tag>
             
-            <tag> 深度学习 </tag>
-            
             <tag> 线性模型 </tag>
+            
+            <tag> 深度学习 </tag>
             
             <tag> Pytorch </tag>
             
@@ -254,9 +254,9 @@
             
             <tag> sklearn </tag>
             
-            <tag> 深度学习 </tag>
-            
             <tag> 线性模型 </tag>
+            
+            <tag> 深度学习 </tag>
             
         </tags>
       
