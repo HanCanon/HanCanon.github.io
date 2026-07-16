@@ -4,14 +4,14 @@
   "hashLength": 12,
   "assets": {
     "/css/custom.css": {
-      "path": "/assets/css/custom.89e65e34f527.css",
-      "sha256": "89e65e34f527aa6c387624cd20f305bba706cd0611307ff124be64fbd86311d7",
-      "bytes": 4671
+      "path": "/assets/css/custom.dd3408d0632b.css",
+      "sha256": "dd3408d0632b32bcd5bd14e5fe88df1ec4e0b1478ff6f1753b47a275b6c2f598",
+      "bytes": 4859
     },
     "/css/index.css": {
-      "path": "/assets/css/index.10617b4c7abf.css",
-      "sha256": "10617b4c7abf735eb11c7e37395e6ad541f612a1f5b3aca1931ea6c4bbb1e9d2",
-      "bytes": 144111
+      "path": "/assets/css/index.772f1d3d2c49.css",
+      "sha256": "772f1d3d2c492b89a7b1f5184c3bc7fce80e15d548c8a427fada8cb6a9403b88",
+      "bytes": 143965
     },
     "/css/swiper.min.css": {
       "path": "/assets/css/swiper.min.8087679cf0f7.css",
@@ -29,9 +29,9 @@
       "bytes": 16520
     },
     "/font/霞鹜文楷-subset.woff2": {
-      "path": "/assets/font/霞鹜文楷-subset.b3194ee267f3.woff2",
-      "sha256": "b3194ee267f386ca1d4479c02ce5647fbdb709a88f01146090eb41dfe9401fda",
-      "bytes": 337496
+      "path": "/assets/font/霞鹜文楷-subset.3d5d6299b97f.woff2",
+      "sha256": "3d5d6299b97faa0067ead5eb28a8ac25f4d50a2a1de9bd92c3b37eafab4722d3",
+      "bytes": 337024
     },
     "/js/lazyload.iife.min.js": {
       "path": "/assets/js/lazyload.iife.min.4c04056fd8bd.js",

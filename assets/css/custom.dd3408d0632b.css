@@ -6,13 +6,9 @@
   --card-filter: none;
 }
 
-/* 页脚、头图及明暗模式遮罩透明。需要覆盖 Butterfly 的背景规则。 */
+/* 保持页脚和头图本体透明；遮罩已在主题配置中关闭。 */
 #footer,
-#page-header,
-#footer::before,
-#page-header::before,
-[data-theme="dark"] #footer::before,
-[data-theme="dark"] #page-header::before {
+#page-header {
   background: transparent !important;
 }
 
@@ -48,6 +44,21 @@
   backdrop-filter: var(--card-filter);
   border-radius: 18px;
   border: var(--border-style);
+}
+
+/* 公告内容使用语义化结构，保持原有居中、逐行显示和链接颜色。 */
+#aside-content .site-announcement {
+  margin: 0;
+  text-align: center;
+}
+
+#aside-content .site-announcement dt,
+#aside-content .site-announcement dd {
+  margin: 0;
+}
+
+#aside-content .site-announcement a {
+  color: #5ea6e5;
 }
 
 /* 文章页、归档页、普通页面 */
@@ -187,7 +198,7 @@ svg.icon {
 
 @font-face {
   font-family: 'KAI';	
-  src: url('/assets/font/霞鹜文楷-subset.b3194ee267f3.woff2') format('woff2');
+  src: url('/assets/font/霞鹜文楷-subset.3d5d6299b97f.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
