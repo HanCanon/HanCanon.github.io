@@ -177,12 +177,12 @@
 <p>第二步是隐藏推荐页面，首先进入<code>about:config</code>，搜索<code>toolkit.legacyUserProfileCustomizations.stylesheets</code>，将其设置为<code>true</code>，然后在地址栏输入<code>about:support</code>，进入排障信息页面，找到配置文件夹项，点击打开文件夹，在打开的文件夹中新建<code>chrome</code>文件夹。现在，我们就可以使用<code>css</code>对<code>firefox</code>进行修改了，在刚才新建的<code>chrome</code>文件夹中新建<code>userContent.css</code>，并将下面的代码写入该文件</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.category</span><span class="selector-attr">[name=<span class="string">&quot;discover&quot;</span>]</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: none <span class="meta">!important</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>重启浏览器，即可隐藏推荐页面，现在，我们就得到了一个干净的扩展管理页面，效果如下图</p>
-<p><img width="960" height="876" loading="lazy" decoding="async" src="/img/content/posts/2025-9-2-firefoxconfig/image-20250901182647846.png" alt="image-20250901182647846" /></p>
+<p><img width="960" height="876" loading="lazy" decoding="async" src="/img/content/posts/2025-9-2-firefoxconfig/image-20250901182647846.webp" alt="image-20250901182647846" /></p>
 <h1 id="隐藏设置栏中的mozilla产品">隐藏设置栏中的Mozilla产品</h1>
 <p>在<code>firefox</code>的设置页面中，有一项Mozilla产品，如下图，这是Mozilla用于推广自家其他产品的</p>
-<p><img width="1050" height="436" loading="lazy" decoding="async" src="/img/content/posts/2025-9-2-firefoxconfig/image-20250902195312690.png" alt="image-20250902195312690" /></p>
+<p><img width="1050" height="436" loading="lazy" decoding="async" src="/img/content/posts/2025-9-2-firefoxconfig/image-20250902195312690.webp" alt="image-20250902195312690" /></p>
 <p>隐藏这一栏也很简单，首先在地址栏输入<code>about:config</code>，进入高级设置，搜索<code>browser.preferences.moreFromMozilla</code>，将其设置为<code>false</code>，即可隐藏此栏，效果如下图</p>
-<p><img width="1031" height="432" loading="lazy" decoding="async" src="/img/content/posts/2025-9-2-firefoxconfig/image-20250902195617071.png" alt="image-20250902195617071" /></p>
+<p><img width="1031" height="432" loading="lazy" decoding="async" src="/img/content/posts/2025-9-2-firefoxconfig/image-20250902195617071.webp" alt="image-20250902195617071" /></p>
 <h1 id="关闭所有标签页时不关闭浏览器而是新建新标签页">关闭所有标签页时不关闭浏览器，而是新建新标签页</h1>
 <p>相信大家可能遇到过这样的情况，在解决bug的时候，浏览器打开了几十个网页，而在bug解决后，快速点击将这些网页全部关闭，十分解压，但是如果手快了，把浏览器页面一口气全关了，那浏览器也会自动关闭。</p>
 <p>而<code>firefox</code>可以通过设置实现关闭所有标签页时不关闭浏览器，而是新建新标签页，首先在地址栏输入<code>about:config</code>，进入高级设置，搜索<code>browser.tabs.closeWindowWithLastTab</code>，将<code>true</code>改为<code>false</code>，即可实现上述功能。</p>

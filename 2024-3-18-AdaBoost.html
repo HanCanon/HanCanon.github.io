@@ -175,7 +175,7 @@
 <h1 id="adaboost算法流程">AdaBoost算法流程</h1>
 <h2 id="从boosting开始">从Boosting开始</h2>
 <p><code>AdaBoost</code>算法是基于<code>Boosting</code>思想的，所以我们先来回顾一下<code>Boosting</code>思想的框架，如下图</p>
-<p><img width="1280" height="720" loading="lazy" decoding="async" src="/img/content/shared/image-20240127202754925.png" alt="" /></p>
+<p><img width="1280" height="720" loading="lazy" decoding="async" src="/img/content/shared/image-20240127202754925.webp" alt="" /></p>
 <p>接下来，我们要在这个框架上填上具体内容，而上述框架缺失的有<strong>弱学习器</strong>，<strong>更新权重</strong>，<strong>结合策略</strong>，需要注意的是<code>AdaBoost</code><strong>算法与<code>Boosting</code>一样，并不是一种具体的算法，而是一种思想</strong>，也就是说，我们这里并不会将所有缺失的内容填满，而是留下<strong>弱学习器</strong>不填。可以理解为，<code>AdaBoost</code>算法是<code>Boosting</code>的一个子集，其确定了更新权重的方法与结合策略，但是没有确定弱学习器。</p>
 <h2 id="二分类问题">二分类问题</h2>
 <p>与一些机器学习算法一样，<code>AdaBoost</code>算法也是从二分类问题开始发展的。由于更新权重的策略并不是一个简单的问题，因此我们这里先给出整个<code>AdaBoost</code>算法的流程，后续再追根溯源。</p>
