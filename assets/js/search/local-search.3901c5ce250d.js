@@ -296,6 +296,12 @@ window.addEventListener('load', () => {
     }
   }
 
+  const handleSearchKeydown = event => {
+    if (event.code === 'Escape') {
+      closeSearch()
+    }
+  }
+
   const openSearch = () => {
     const bodyStyle = document.body.style
     bodyStyle.width = '100%'
@@ -309,12 +315,7 @@ window.addEventListener('load', () => {
       loadFlag = true
     }
     // shortcut: ESC
-    document.addEventListener('keydown', function f (event) {
-      if (event.code === 'Escape') {
-        closeSearch()
-        document.removeEventListener('keydown', f)
-      }
-    })
+    document.addEventListener('keydown', handleSearchKeydown)
 
     fixSafariHeight()
     window.addEventListener('resize', fixSafariHeight)
@@ -326,6 +327,7 @@ window.addEventListener('load', () => {
     bodyStyle.overflow = ''
     btf.animateOut($searchDialog, 'search_close .5s')
     btf.animateOut($searchMask, 'to_hide 0.5s')
+    document.removeEventListener('keydown', handleSearchKeydown)
     window.removeEventListener('resize', fixSafariHeight)
   }
 
