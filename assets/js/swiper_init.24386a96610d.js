@@ -78,6 +78,8 @@
         if (img.dataset.fallbackApplied === 'true') return;
 
         img.dataset.fallbackApplied = 'true';
+        img.removeAttribute('srcset');
+        img.removeAttribute('sizes');
         img.src = img.dataset.errorSrc;
       });
     });
