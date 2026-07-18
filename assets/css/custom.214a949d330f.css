@@ -168,7 +168,7 @@ svg.icon {
 }
 
 #rightside_config.show .fa-cog {
-  transform: rotate(60deg);
+  transform: rotate(-60deg);
 }
 
 .icon-SmartHome:before {

@@ -4,9 +4,9 @@
   "hashLength": 12,
   "assets": {
     "/css/custom.css": {
-      "path": "/assets/css/custom.e04cbc0b85b9.css",
-      "sha256": "e04cbc0b85b90464a5cc817747fd9a4312e93878d43a83278c455a3bc975e542",
-      "bytes": 4859
+      "path": "/assets/css/custom.214a949d330f.css",
+      "sha256": "214a949d330ff65895a0810e7f900886d984dc935892a29132296b296629657b",
+      "bytes": 4860
     },
     "/css/index.css": {
       "path": "/assets/css/index.772f1d3d2c49.css",
