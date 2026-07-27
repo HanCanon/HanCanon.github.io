@@ -46,6 +46,11 @@
   border: var(--border-style);
 }
 
+/* Keep the author action softer than the surrounding card. */
+#aside-content .card-info #card-info-btn {
+  border-radius: 12px;
+}
+
 /* 公告内容使用语义化结构，保持原有居中、逐行显示和链接颜色。 */
 #aside-content .site-announcement {
   margin: 0;
