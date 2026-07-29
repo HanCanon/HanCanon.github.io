@@ -739,8 +739,10 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   }
 
-  const addPostOutdateNotice = function () {
+  function addPostOutdateNotice () {
     const data = GLOBAL_CONFIG.noticeOutdate
+    if (data === undefined || !GLOBAL_CONFIG_SITE.noticeOutdate) return
+
     const diffDay = btf.diffDate(GLOBAL_CONFIG_SITE.postUpdate)
     if (diffDay >= data.limitDay) {
       const ele = document.createElement('div')
@@ -793,7 +795,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initAdjust()
 
     if (GLOBAL_CONFIG_SITE.isPost) {
-      GLOBAL_CONFIG.noticeOutdate !== undefined && addPostOutdateNotice()
+      GLOBAL_CONFIG.noticeOutdate !== undefined && GLOBAL_CONFIG_SITE.noticeOutdate && addPostOutdateNotice()
       GLOBAL_CONFIG.relativeDate.post && relativeDate(document.querySelectorAll('#post-meta time'))
     } else {
       GLOBAL_CONFIG.relativeDate.homepage && relativeDate(document.querySelectorAll('#recent-posts time'))
