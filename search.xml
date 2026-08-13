@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>从ChatBot到AI Agent</title>
+      <link href="/2026-8-13-AI-Agent.html"/>
+      <url>/2026-8-13-AI-Agent.html</url>
+      
+        <content type="html"></content>
+      
+      
+      <categories>
+          
+          <category> 人工智能 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LLM </tag>
+            
+            <tag> AI Agent </tag>
+            
+            <tag> Prompt Engineering </tag>
+            
+            <tag> Context Engineering </tag>
+            
+            <tag> Harness Engineering </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>7-Zip如何使用zstd压缩算法</title>
       <link href="/2025-9-13-7z_zstd.html"/>
       <url>/2025-9-13-7z_zstd.html</url>
