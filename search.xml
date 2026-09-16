@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>AI语音输入法使用分享</title>
+      <link href="/2026-9-16-AI-Voice-Input.html"/>
+      <url>/2026-9-16-AI-Voice-Input.html</url>
+      
+        <content type="html"></content>
+      
+      
+      <categories>
+          
+          <category> 人工智能 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件 </tag>
+            
+            <tag> LLM </tag>
+            
+            <tag> 语音输入 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>从ChatBot到AI Agent</title>
       <link href="/2026-8-13-AI-Agent.html"/>
       <url>/2026-8-13-AI-Agent.html</url>
@@ -225,9 +254,9 @@
             
             <tag> 数学 </tag>
             
-            <tag> 深度学习 </tag>
-            
             <tag> 线性模型 </tag>
+            
+            <tag> 深度学习 </tag>
             
             <tag> Pytorch </tag>
             
@@ -287,9 +316,9 @@
             
             <tag> sklearn </tag>
             
-            <tag> 深度学习 </tag>
-            
             <tag> 线性模型 </tag>
+            
+            <tag> 深度学习 </tag>
             
         </tags>
       
